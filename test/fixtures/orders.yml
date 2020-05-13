@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  listing: one
+  cost: 1
+  paid: false
+  completed: false
+
+two:
+  user: two
+  listing: two
+  cost: 1
+  paid: false
+  completed: false
