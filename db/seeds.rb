@@ -78,3 +78,12 @@ for i in 0..50
                         completed: [true, false].sample)
   puts "Order #{i} created"
 end
+
+# Create reviews
+for i in 0..50
+  order = Order.all.sample
+  order.create_review(user_id: order.listing.user_id,
+                       rating: rand(1..5),
+                       description: Faker::Hipster.paragraph(sentence_count: rand(1..4))) unless order.review
+  puts "Review #{i} created"                
+end
