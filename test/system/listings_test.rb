@@ -14,6 +14,12 @@ class ListingsTest < ApplicationSystemTestCase
     visit listings_url
     click_on "New Listing"
 
+    fill_in "Active", with: @listing.active
+    fill_in "Category", with: @listing.category
+    fill_in "Delivery time", with: @listing.delivery_time
+    fill_in "Description", with: @listing.description
+    fill_in "Price", with: @listing.price
+    fill_in "Title", with: @listing.title
     click_on "Create Listing"
 
     assert_text "Listing was successfully created"
@@ -24,6 +30,12 @@ class ListingsTest < ApplicationSystemTestCase
     visit listings_url
     click_on "Edit", match: :first
 
+    fill_in "Active", with: @listing.active
+    fill_in "Category", with: @listing.category
+    fill_in "Delivery time", with: @listing.delivery_time
+    fill_in "Description", with: @listing.description
+    fill_in "Price", with: @listing.price
+    fill_in "Title", with: @listing.title
     click_on "Update Listing"
 
     assert_text "Listing was successfully updated"
