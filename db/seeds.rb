@@ -66,3 +66,15 @@ for i in 0...100
                        active: [true, false].sample)
   puts "Listing #{i} created"
 end
+
+# Create orders for random users
+for i in 0..50
+  listing = Listing.all.sample
+  user_id = rand(1..User.all.length)
+  user_id += 1 if user_id == listing.user_id
+  listing.orders.create(user_id: user_id,
+                        cost: listing.price,
+                        paid: [true, false].sample,
+                        completed: [true, false].sample)
+  puts "Order #{i} created"
+end

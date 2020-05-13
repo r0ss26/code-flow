@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_many :employments
   has_many :educations
   has_many :listings
+  has_many :orders
 end
