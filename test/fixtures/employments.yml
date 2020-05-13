@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  company: MyString
+  position: MyString
+  start_date: 2020-05-13
+  end_date: 2020-05-13
+
+two:
+  user: two
+  company: MyString
+  position: MyString
+  start_date: 2020-05-13
+  end_date: 2020-05-13
