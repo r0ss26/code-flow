@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_13_054230) do
+ActiveRecord::Schema.define(version: 2020_05_13_062049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "educations", force: :cascade do |t|
     t.bigint "user_id"
@@ -37,6 +43,20 @@ ActiveRecord::Schema.define(version: 2020_05_13_054230) do
     t.index ["user_id"], name: "index_employments_on_user_id"
   end
 
+  create_table "listings", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "title"
+    t.bigint "category_id"
+    t.text "description"
+    t.integer "price"
+    t.integer "delivery_time"
+    t.boolean "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_listings_on_category_id"
+    t.index ["user_id"], name: "index_listings_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -57,4 +77,6 @@ ActiveRecord::Schema.define(version: 2020_05_13_054230) do
 
   add_foreign_key "educations", "users"
   add_foreign_key "employments", "users"
+  add_foreign_key "listings", "categories"
+  add_foreign_key "listings", "users"
 end

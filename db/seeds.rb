@@ -39,3 +39,30 @@ for i in 0...100
                           end_date:Faker::Date.in_date_period(year: 2018))
   puts "Education #{i} created"
 end
+
+# Create the categories that a listing can have
+categories = ["Code Review", "Video Tutoring", "Text Tutoring", "Phone Tutoring"]
+categories.each do |category|
+  Category.create(name: category)
+  puts "Category #{category} created"
+end
+
+# Create listings for random users
+titles = ["Javascript Help", 
+         "Python Help", 
+         "Java Help", 
+         "I will review your code", 
+         "I will review your Ruby code", 
+         "I will be your code tutor"]
+
+# Create listings for random users
+for i in 0...100
+  user = User.all.sample
+  user.listings.create(title: titles.sample,
+                       category_id: rand(categories.length) + 1,
+                       description: Faker::Lorem.paragraphs(number: 2).join("\n"),
+                       price: (rand(5..50) + 1) * 100,
+                       delivery_time: rand(1..7),
+                       active: [true, false].sample)
+  puts "Listing #{i} created"
+end
