@@ -1,12 +1,20 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :seller]
   before_action :set_user_listing, only: [:edit, :update, :delete]
+
+  def seller
+    @listings = Listing.where(user: current_user)
+    @active_listings = @listings.where(active: true)
+    @inactive_listings = @listings.where(active: false)
+    p "\n\n #{@active_listings}"
+    p "\n\n #{@inactive_listings}"
+  end
 
   # GET /listings
   # GET /listings.json
   def index
-    @listings = Listing.all
+    @listings = Listing.where(active: true)
   end
 
   # GET /listings/1
