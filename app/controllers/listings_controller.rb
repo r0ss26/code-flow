@@ -1,5 +1,7 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_user_listing, only: [:edit, :update, :delete]
 
   # GET /listings
   # GET /listings.json
@@ -65,6 +67,12 @@ class ListingsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_listing
       @listing = Listing.find(params[:id])
+    end
+
+    def set_user_listing
+      if current_user != @listing.user
+        redirect_to listing_path(@listing), alert: "Sorry, this listing belongs to someone else"
+      end
     end
 
     # Only allow a list of trusted parameters through.
