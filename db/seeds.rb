@@ -10,7 +10,7 @@
 for i in 0...50
   user = User.create(email: Faker::Internet.email,
                      password: Faker::Internet.password,
-                     first_name: Faker::Book.author,
+                     first_name: Faker::Name.first_name,
                      middle_name: Faker::Name.middle_name,
                      last_name: Faker::Name.last_name,
                      city: Faker::Address.city,
@@ -70,9 +70,12 @@ end
 # Create orders for random users
 for i in 0..50
   listing = Listing.all.sample
-  user_id = rand(1..User.all.length)
-  user_id += 1 if user_id == listing.user_id
-  listing.orders.create(user_id: user_id,
+  buyer_id = User.all.sample.id
+  while buyer_id == listing.user_id
+    buyer_id = User.all.sample.id
+  end
+  listing.orders.create(buyer_id: buyer_id,
+                        seller_id: listing.user_id,
                         cost: listing.price,
                         paid: [true, false].sample,
                         completed: [true, false].sample)
@@ -87,3 +90,10 @@ for i in 0..50
                       description: Faker::Hipster.paragraph(sentence_count: rand(1..4))) unless order.review
   puts "Review #{i} created"                
 end
+
+# Test User
+user = User.create(email: "test@codeflow.com",
+  password: "123456",
+  first_name: "Test",
+  middle_name: Faker::Name.middle_name,
+  last_name: "Tester")

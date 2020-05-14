@@ -1,13 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Posted By:</strong>
+  <%= "#{@listing.user.first_name} #{@listing.user.middle_name[0]} #{@listing.user.last_name}" %>
+</p>
+
+<p>
   <strong>Title:</strong>
   <%= @listing.title %>
 </p>
 
 <p>
   <strong>Category:</strong>
-  <%= @listing.category %>
+  <%= @listing.category.name %>
 </p>
 
 <p>
@@ -23,11 +28,6 @@
 <p>
   <strong>Delivery time:</strong>
   <%= @listing.delivery_time %>
-</p>
-
-<p>
-  <strong>Active:</strong>
-  <%= @listing.active %>
 </p>
 
 <%= link_to 'Edit', edit_listing_path(@listing) %> |
