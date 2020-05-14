@@ -1,0 +1,56 @@
+<% if user_signed_in? %>
+<div class="navbar is-info" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <div class="navbar-item"><span>CodeFlow</span></div>
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      <div class="navbar-item">
+        <%= link_to "Browse", listings_path, class: "button is-link is-rounded" %>
+      </div>
+      <div class="navbar-item">
+        <%= link_to "New Listing", new_listing_path, class: "button is-link is-rounded" %>
+      </div>
+    </div>
+    <div class="navbar-end">
+    <div class="navbar-item">
+          <%= link_to "Seller Dashboard", seller_path, class: "button is-link is-rounded" %>
+      </div>
+      <div class="navbar-item">
+          <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "button is-link is-rounded" %>
+      </div>
+    </div>
+  </div>
+</div>
+<% else %>
+<div class="navbar is-info" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <div class="navbar-item"><span>CodeFlow</span></div>
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      <div class="navbar-item">
+        <%= link_to "Browse", listings_path, class: "button is-link is-rounded" %>
+      </div>
+    </div>
+    <div class="navbar-end">
+      <div class="navbar-item">
+            <%= link_to "Sign Up", new_user_registration_path, class: "button is-link is-rounded" %>
+      </div>
+      <div class="navbar-item">
+          <%= link_to "Log In", new_user_session_path, class: "button is-link is-rounded" %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
