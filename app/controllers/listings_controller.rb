@@ -88,3 +88,4 @@ class ListingsController < ApplicationController
       params.require(:listing).permit(:title, :category_id, :description, :price, :delivery_time, :active)
     end
 end
+
