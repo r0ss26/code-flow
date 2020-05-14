@@ -18,11 +18,14 @@
       </div>
     </div>
     <div class="navbar-end">
-    <div class="navbar-item">
-          <%= link_to "Seller Dashboard", seller_path, class: "button is-link is-rounded" %>
+      <div class="navbar-item">
+        <%= link_to "Buyer Dashboard", buyer_path, class: "button is-link is-rounded" %>
       </div>
       <div class="navbar-item">
-          <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "button is-link is-rounded" %>
+        <%= link_to "Seller Dashboard", seller_path, class: "button is-link is-rounded" %>
+      </div>
+      <div class="navbar-item">
+        <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "button is-link is-rounded" %>
       </div>
     </div>
   </div>

@@ -1,12 +1,12 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  before_action :set_listing, only: [:new, :create]
+  before_action :set_listing, only: [:index, :new, :create]
 
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    @orders = Order.where(listing_id: @listing.id)
   end
 
   # GET /orders/1
@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
-    @order = Order.new
+    render "confirmation"
   end
 
   # GET /orders/1/edit
@@ -26,9 +26,10 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(order_params)
+    @order = Order.new
     @seller = @listing.user
-
+    @order.paid = false
+    @order.completed = true
     @order.cost = @listing.price
     @order.listing_id = @listing.id
     @order.seller_id = @seller.id
@@ -36,7 +37,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to root_url, notice: 'Order was successfully created.' }
+        format.html { redirect_to listing_path(@listing), notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
