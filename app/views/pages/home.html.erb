@@ -1,0 +1,27 @@
+<section class="hero is-medium has-bg-img">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Have your code reviewed by expert reviewers.
+      </h1>
+      <h2 class="subtitle">
+        Earn money and help others by sharing your knowledge.
+      </h2> 
+      <%= link_to "Browse", listings_path, class: "button is-link is-rounded" %>
+      <% if user_signed_in? %>
+        <%= link_to "Dashboard", root_path , class: "button is-link is-rounded is-warning" %>
+      <% else %>
+        <%= link_to "Sign Up", new_user_registration_path, class: "button is-link is-rounded is-warning" %>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<div class="columns has-text-centered">
+  <div class="column is-half">
+    <h1 class="title">Top Listings</h1>
+  </div>
+  <div class="column is-half">
+    <h1 class="title">Popular Tags</h1>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.has-bg-img { 
+  background: url('hero.jpg')center center; 
+  background-size: cover; 
+}
+
+.hero-body {
+  .title, .subtitle { color: white; }
+  background-color: rgba(27, 27, 20, 0.9);
+}

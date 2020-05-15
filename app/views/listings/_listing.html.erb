@@ -25,10 +25,13 @@
 
       <div class="content">
         <%= listing.description %>.
-        <a href="#">#css</a> <a href="#">#responsive</a>
         <br>
-        <time datetime="<%= listing.updated_at %>"><%= listing.updated_at %></time>
+        <time datetime="<%= listing.updated_at %>"><%= listing.updated_at.localtime.to_formatted_s(:short) %></time>
       </div>
     </div>
+    <footer class="card-footer">
+      <%= link_to "View Listing", listing_path(listing), class: "card-footer-item" %>
+      <%= link_to "Purchase", new_listing_order_path(listing), class: "card-footer-item" %>
+  </footer>
   </div>
 </div>

@@ -7,8 +7,6 @@ class ListingsController < ApplicationController
     @listings = Listing.where(user: current_user)
     @active_listings = @listings.where(active: true)
     @inactive_listings = @listings.where(active: false)
-    p "\n\n #{@active_listings}"
-    p "\n\n #{@inactive_listings}"
   end
 
   # GET /listings
