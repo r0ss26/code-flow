@@ -1,12 +1,21 @@
 <div class="columns">
   <div class="column is-narrow">
     <div class="menu">
-      <p class="menu-label">
-        Dashboard
-      </p>
       <ul class="menu-list">
-        <li><%= link_to "Seller Dashboard", seller_path %></li>
-        <li><%= link_to "Buyer Dashboard", seller_path %></li>
+        <p class="menu-label">
+          Seller Dashboard
+        </p>
+        <ul>
+          <li><%= link_to "Your Listings", seller_path %></li>
+          <li><%= link_to "Orders", seller_path %></li>
+        </ul>
+        <p class="menu-label">
+          Buyer Dashboard
+        </p>
+        <ul>
+          <li><%= link_to "Purchases", root_path %></li>
+          <li><%= link_to "Favourites", root_path %></li>
+        </ul>
       </ul>
       <p class="menu-label">
         Account
