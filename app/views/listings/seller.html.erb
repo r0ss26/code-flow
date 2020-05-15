@@ -17,15 +17,47 @@
       </ul>
     </div>
   </div>
+
+
   <div class="column">
-    <% if !@active_listings.empty? %>
     <div class="title">Your Active Listings</div>
-      <%= render partial: "admin_listing", collection: @active_listings %>
+    <% if !@active_listings.empty? %>
+
+    <table class="table is-hoverable">
+      <thead>
+        <tr>
+          <td>Title</td>
+          <td>Category</td>
+          <td>Description</td>
+          <td>Price</td>
+          <td>Delivery Time</td>
+          <td>Admin</td>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render partial: "admin_listing", collection: @active_listings %>
+      </tbody>
+    </table>
+
     <% end %>
 
     <div class="title">Your Inactive Listings</div>
     <% if !@inactive_listings.empty? %>
-      <%= render partial: "admin_listing", collection: @inactive_listings %>
+      <table class="table is-hoverable">
+      <thead>
+        <tr>
+          <td>Title</td>
+          <td>Category</td>
+          <td>Description</td>
+          <td>Price</td>
+          <td>Delivery Time</td>
+          <td>Admin</td>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render partial: "admin_listing", collection: @inactive_listings %>
+      </tbody>
+    </table>
     <% end %>
 
     <% if user_signed_in? %>
