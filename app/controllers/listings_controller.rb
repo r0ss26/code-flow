@@ -3,7 +3,7 @@ class ListingsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :seller]
   before_action :set_user_listing, only: [:edit, :update, :delete]
 
-  def seller
+  def seller_listings
     @listings = Listing.where(user: current_user)
     @active_listings = @listings.where(active: true)
     @inactive_listings = @listings.where(active: false)

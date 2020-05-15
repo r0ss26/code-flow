@@ -1,32 +1,7 @@
 <div class="columns">
   <div class="column is-narrow">
-    <div class="menu">
-      <ul class="menu-list">
-        <p class="menu-label">
-          Seller Dashboard
-        </p>
-        <ul>
-          <li><%= link_to "Your Listings", seller_path %></li>
-          <li><%= link_to "Orders", seller_path %></li>
-        </ul>
-        <p class="menu-label">
-          Buyer Dashboard
-        </p>
-        <ul>
-          <li><%= link_to "Purchases", root_path %></li>
-          <li><%= link_to "Favourites", root_path %></li>
-        </ul>
-      </ul>
-      <p class="menu-label">
-        Account
-      </p>
-      <ul class="menu-list">
-        <li><%= link_to "Profile", seller_path %></li>
-        <li><%= link_to "Settings", seller_path %></li>
-      </ul>
-    </div>
+    <%= render "shared/dashboard_menu" %>
   </div>
-
 
   <div class="column">
     <div class="title">Your Active Listings</div>

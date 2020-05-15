@@ -1,0 +1,26 @@
+<div class="menu">
+  <ul class="menu-list">
+    <p class="menu-label">
+      Buyer Dashboard
+    </p>
+    <ul>
+      <li><%= link_to "Purchases", root_path %></li>
+      <li><%= link_to "Favourites", root_path %></li>
+    </ul>
+    <p class="menu-label">
+      Seller Dashboard
+    </p>
+    <ul>
+      <li><%= link_to "Your Listings", seller_listings_path %></li>
+      <li><%= link_to "Orders", seller_orders_path %></li>
+      <li><%= link_to "Reviews", root_path %></li>
+    </ul>
+  </ul>
+  <p class="menu-label">
+    Account
+  </p>
+  <ul class="menu-list">
+    <li><%= link_to "Profile", seller_listings_path %></li>
+    <li><%= link_to "Settings", edit_user_registration_path %></li>
+  </ul>
+</div>
