@@ -1,11 +1,35 @@
-<% if !@active_listings.empty? %>
-  <%= render partial: "listing", collection: @active_listings %>
-<% end %>
+<div class="columns">
+  <div class="column is-narrow">
+    <div class="menu">
+      <p class="menu-label">
+        Dashboard
+      </p>
+      <ul class="menu-list">
+        <li><%= link_to "Seller Dashboard", seller_path %></li>
+        <li><%= link_to "Buyer Dashboard", seller_path %></li>
+      </ul>
+      <p class="menu-label">
+        Account
+      </p>
+      <ul class="menu-list">
+        <li><%= link_to "Profile", seller_path %></li>
+        <li><%= link_to "Settings", seller_path %></li>
+      </ul>
+    </div>
+  </div>
+  <div class="column">
+    <% if !@active_listings.empty? %>
+    <div class="title">Your Active Listings</div>
+      <%= render partial: "admin_listing", collection: @active_listings %>
+    <% end %>
 
-<% if !@inactive_listings.empty? %>
-  <%= render partial: "listing", collection: @inactive_listings %>
-<% end %>
+    <div class="title">Your Inactive Listings</div>
+    <% if !@inactive_listings.empty? %>
+      <%= render partial: "admin_listing", collection: @inactive_listings %>
+    <% end %>
 
-<% if user_signed_in? %>
-  <%= link_to 'New Listing', new_listing_path %>
-<% end %>
+    <% if user_signed_in? %>
+      <%= link_to '+ New Listing', new_listing_path %>
+    <% end %>
+  </div>
+</div>

@@ -19,7 +19,7 @@
         </div>
         <div class="media-content">
           <p class="title is-4"><%= "#{listing.user.first_name} #{listing.user.middle_name[0]}. #{listing.user.last_name}" %></p>
-          <p class="subtitle is-6"><%= listing.price %></p>
+          <p class="subtitle is-6">$<%= listing.price / 100 %></p>
         </div>
       </div>
 
