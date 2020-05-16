@@ -4,15 +4,15 @@
       Buyer Dashboard
     </p>
     <ul>
-      <li><%= link_to "Purchases", root_path %></li>
+      <li><%= link_to "Purchases", purchases_dashboard_path %></li>
       <li><%= link_to "Favourites", root_path %></li>
     </ul>
     <p class="menu-label">
       Seller Dashboard
     </p>
     <ul>
-      <li><%= link_to "Your Listings", seller_listings_path %></li>
-      <li><%= link_to "Orders", seller_orders_path %></li>
+      <li><%= link_to "Your Listings", listings_dashboard_path %></li>
+      <li><%= link_to "Orders", orders_dashboard_path %></li>
       <li><%= link_to "Reviews", root_path %></li>
     </ul>
   </ul>
@@ -20,7 +20,7 @@
     Account
   </p>
   <ul class="menu-list">
-    <li><%= link_to "Profile", seller_listings_path %></li>
+    <li><%= link_to "Profile", root_path %></li>
     <li><%= link_to "Settings", edit_user_registration_path %></li>
   </ul>
 </div>
