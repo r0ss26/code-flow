@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get "seller/orders", to: "orders#seller_orders"
   get "buyer", to: "listings#buyer"
   
+  # Dashboard is a singular resource because each user
+  # will only have one dashboard.
   resource :dashboard, only: [:show] do
     member do
       get "listings"
