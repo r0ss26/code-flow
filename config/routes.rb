@@ -6,6 +6,12 @@ Rails.application.routes.draw do
   get "seller/orders", to: "orders#seller_orders"
   get "buyer", to: "listings#buyer"
   
+  resource :dashboard, only: [:show] do
+    member do
+      get "listings"
+    end
+  end
+
   resources :listings do
     resources :orders
   end
