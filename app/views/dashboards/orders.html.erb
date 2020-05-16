@@ -1,0 +1,46 @@
+<div class="column">
+  <div class="title">Active Orders</div>
+
+  <% if !@active_orders.empty? %>
+
+    <table class="table is-hoverable">
+      <thead>
+        <tr>
+          <td>Title</td>
+          <td>Cost</td>
+          <td>Paid</td>
+          <td>Buyer</td>
+          <td>Delivery Time</td>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render partial: "order", collection: @active_orders %>
+      </tbody>
+    </table>
+
+  <% end %>
+
+  <div class="title">Past Orders</div>
+
+  <% if !@past_orders.empty? %>
+    <table class="table is-hoverable">
+      <thead>
+        <tr>
+          <td>Title</td>
+          <td>Cost</td>
+          <td>Paid</td>
+          <td>Buyer</td>
+          <td>Delivery Time</td>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render partial: "order", collection: @past_orders %>
+      </tbody>
+    </table>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <%= link_to '+ New Listing', new_listing_path %>
+  <% end %>
+</div>
+
