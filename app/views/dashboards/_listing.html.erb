@@ -1,0 +1,12 @@
+<tr>
+  <td><%= listing.title %></td>
+  <td><%= listing.category.name %></td>
+  <td><%= listing.description %></td>
+  <td><%= listing.price %></td>
+  <td><%= listing.delivery_time %> Days</td>
+  <td>
+    <%= link_to "View",  listing_path(listing) %>
+    <%= link_to "Edit",  edit_listing_path(listing) %>
+    <%= link_to "Delete",  listing_path(listing), method: :delete, data: {confirm: "Are you sure?"} %>
+  </td>
+</tr>
