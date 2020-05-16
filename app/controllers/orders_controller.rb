@@ -24,6 +24,7 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
+    @order = Order.new
     render "confirmation"
   end
 
@@ -37,7 +38,7 @@ class OrdersController < ApplicationController
     @order = Order.new
     @seller = @listing.user
     @order.paid = false
-    @order.completed = true
+    @order.completed = false
     @order.cost = @listing.price
     @order.listing_id = @listing.id
     @order.seller_id = @seller.id

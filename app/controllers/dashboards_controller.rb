@@ -25,11 +25,13 @@ class DashboardsController < ApplicationController
   end
 
   def orders
-
+    @orders = Order.where(seller_id: current_user.id)
+    @active_orders = @orders.where(completed: false)
+    @past_orders = @orders.where(completed: true)
   end
 
   def reviews
-
+    # @reviews = 
   end
 
 end
