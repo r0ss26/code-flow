@@ -1,0 +1,36 @@
+<div class="column">
+  <h1 class="title">Current Purchases</h1>
+
+  <table class="table is-hoverable">
+    <thead>
+      <tr>
+        <td>Title</td>
+        <td>Cost</td>
+        <td>Seller</td>
+        <td>Listing</td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: "order", collection: @current_purchases %>
+    </tbody>
+    </table>
+
+  <h1 class="title">Past Purchases</h1>
+
+  <table class="table is-hoverable">
+    <thead>
+      <tr>
+        <td>Title</td>
+        <td>Cost</td>
+        <td>Seller</td>
+        <td>Listing</td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: "order", collection: @past_purchases %>
+    </tbody>
+    </table> 
+
+</div>
