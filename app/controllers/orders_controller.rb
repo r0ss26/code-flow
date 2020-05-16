@@ -6,10 +6,6 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
 
-  def seller_orders
-    @orders = Order.where(seller_id: current_user.id)
-  end
-
   def index
     if @listing.user.id != current_user.id
       redirect_to listing_path(@listing)
