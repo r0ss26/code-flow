@@ -85,10 +85,13 @@ end
 # Create reviews
 for i in 0..50
   order = Order.all.sample
-  order.create_review(user_id: order.listing.user_id,
+  order.create_review(review_poster_id: order.buyer.id,
+                      review_receiver_id: order.seller.id,
                       rating: rand(1..5),
                       description: Faker::Hipster.paragraph(sentence_count: rand(1..4))) unless order.review
-  puts "Review #{i} created"                
+  puts "Review #{i} created" 
+  puts order.errors.full_messages if order.errors.any?
+
 end
 
 # Test User
