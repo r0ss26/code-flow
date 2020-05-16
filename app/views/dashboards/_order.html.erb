@@ -1,0 +1,10 @@
+<tr>
+  <td><%= order.listing.title %></td>
+  <td><%= order.cost %></td>
+  <td><%= "#{order.seller.first_name} #{order.seller.middle_name[0]}. #{order.seller.last_name}" %></td>
+  <td><%= link_to "View Listing", listing_path(order.listing) %></td>
+  <% if order.completed %>
+  <td><%= link_to "Leave a Review", root_path %></td>
+  <% end %>
+</tr>
+
