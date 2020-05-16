@@ -10,6 +10,8 @@ class DashboardsController < ApplicationController
 
   def purchases
     @purchases = Order.where(buyer_id: current_user.id)
+    @current_purchases = @purchases.where(completed: false)
+    @past_purchases = @purchases.where(completed: true)
   end
 
   def favourites
