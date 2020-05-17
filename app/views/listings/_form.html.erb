@@ -17,7 +17,7 @@
   </div>
 
   <div>
-    <%= form.label :image %> 
+    <%= form.label :image, class: "label" %> <span>(Images that are not 4:3 will be cropped to fit on the listings page.)</span>
     <%= form.file_field :image, accept: 'image/png,image/jpeg,image/jpg' %>
   </div>
 
