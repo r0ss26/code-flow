@@ -16,6 +16,11 @@
     <%= form.text_field :title, class: "input" %>
   </div>
 
+  <div>
+    <%= form.label :image %> 
+    <%= form.file_field :image, accept: 'image/png,image/jpeg,image/jpg' %>
+  </div>
+
   <div class="field select">
     <%= form.label :category, class: "label" %>
     <%= collection_select(:listing, :category_id, Category.all, :id, :name) %>

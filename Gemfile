@@ -66,3 +66,5 @@ gem "devise", "~> 4.7"
 gem "faker", "~> 2.11"
 
 gem "bulma-rails", "~> 0.8.0"
+
+gem "aws-sdk-s3", "~> 1.64"

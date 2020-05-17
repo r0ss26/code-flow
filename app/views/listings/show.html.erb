@@ -15,7 +15,8 @@
         <div class="box is-inline"><strong>$<%= @listing.price / 100 %></strong></div>
         <div class="box is-inline"><strong>Delivery Time: <%= @listing.delivery_time %> Days</strong></div>
         <figure class="image is-4x3">
-            <img src="https://bulma.io/images/placeholders/640x480.png" alt="Placeholder image">
+          <%= image_tag  @listing.image if @listing.image.attached?%>
+          <%= image_tag  "https://bulma.io/images/placeholders/1280x960.png" if !@listing.image.attached? %>
         </figure>
         <p>
           <strong>Description:</strong>
