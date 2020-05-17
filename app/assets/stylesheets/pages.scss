@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .has-bg-img { 
-  background: url('hero.jpg')center center; 
+  background: url(image_path('hero.jpg'))center center; 
   background-size: cover; 
 }
 
