@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @review.order_id %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @review.rating %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @review.description %>
+</p>
+
+<p>
+  <strong>Review poster:</strong>
+  <%= @review.review_poster_id %>
+</p>
+
+<p>
+  <strong>Review receiver:</strong>
+  <%= @review.review_receiver_id %>
+</p>
+
+<%= link_to 'Edit', edit_listing_order_review_path(@review) %> |
+<%= link_to 'Back', listing_order_reviews_path %>
