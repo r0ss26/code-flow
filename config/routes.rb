@@ -17,4 +17,9 @@ Rails.application.routes.draw do
   resources :listings do
     resources :orders
   end
+
+  resources :conversations do
+    resources :messages
+  end
+
 end
