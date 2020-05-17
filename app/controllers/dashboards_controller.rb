@@ -1,4 +1,5 @@
 class DashboardsController < ApplicationController
+  before_action :authenticate_user!
 
   def buyer
 
@@ -24,14 +25,14 @@ class DashboardsController < ApplicationController
     @inactive_listings = @listings.where(active: false)
   end
 
-  def orders
+  def sales
     @orders = Order.where(seller_id: current_user.id)
     @active_orders = @orders.where(completed: false)
     @past_orders = @orders.where(completed: true)
   end
 
   def reviews
-    # @reviews = 
+    @reviews = Review.where(review_receiver_id: current_user.id)
   end
 
 end

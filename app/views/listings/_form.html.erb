@@ -12,36 +12,36 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.label :title, class: "label" %>
+    <%= form.text_field :title, class: "input" %>
   </div>
 
-  <div class="field">
-    <%= form.label :category %>
+  <div class="field select">
+    <%= form.label :category, class: "label" %>
     <%= collection_select(:listing, :category_id, Category.all, :id, :name) %>
   </div>
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
+    <%= form.label :description, class: "label" %>
+    <%= form.text_field :description, class: "input" %>
   </div>
 
   <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price %>
+    <%= form.label :price, class: "label" %>
+    <%= form.text_field :price, class: "input" %>
   </div>
 
   <div class="field">
-    <%= form.label :delivery_time %>
-    <%= form.text_field :delivery_time %>
+    <%= form.label :delivery_time, class: "label" %>
+    <%= form.text_field :delivery_time, class: "input" %>
   </div>
 
   <div class="field">
-    <%= form.label :active %>
-    <%= form.check_box :active %>
+    <%= form.label :active, class: "label" %>
+    <%= form.check_box :active, class: "checkbox" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Create Listing", class: "button" %>
   </div>
 <% end %>
