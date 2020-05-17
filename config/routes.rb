@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   resource :dashboard, only: [:show] do
     member do
       get "listings"
-      get "orders"
+      get "sales"
       get "purchases"
+      get "reviews"
     end
   end
 

@@ -20,6 +20,13 @@ for i in 0...50
   puts user.errors.full_messages if user.errors.any?
 end
 
+# Test User
+user = User.create(email: "test@codeflow.com",
+  password: "123456",
+  first_name: "Test",
+  middle_name: Faker::Name.middle_name,
+  last_name: "Tester")
+
 # Create employments for random users
 for i in 0...100
   user = User.all.sample
@@ -94,9 +101,3 @@ for i in 0..50
 
 end
 
-# Test User
-user = User.create(email: "test@codeflow.com",
-  password: "123456",
-  first_name: "Test",
-  middle_name: Faker::Name.middle_name,
-  last_name: "Tester")
