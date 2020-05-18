@@ -1,5 +1,22 @@
 <div class="column">
-  <h2 class="title">Your Reviews</h2>
+  <div class="title">Your Reviews</div>
 
-  <%= render partial: "review", collection: @reviews %>
+  <% if !@reviews.empty? %>
+
+    <table class="table is-hoverable">
+      <thead>
+        <tr>
+          <td>Rating</td>
+          <td>Description</td>
+          <td>Left By</td>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render partial: "review", collection: @reviews %>
+      </tbody>
+    </table>
+
+  <% end %>
+
+  </div>
 </div>

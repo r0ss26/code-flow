@@ -7,7 +7,6 @@ Rails.application.routes.draw do
     resource :profile
     resources :reviews
   end
-  end
   
   # Dashboard is a singular resource because each user
   # will only have one dashboard.
