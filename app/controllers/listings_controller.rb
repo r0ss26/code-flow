@@ -63,6 +63,11 @@ class ListingsController < ApplicationController
     end
   end
 
+  def favorite
+    current_user.favorite(@listing)
+    redirect_to(:back)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_listing
@@ -77,7 +82,7 @@ class ListingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def listing_params
-      params.require(:listing).permit(:title, :image, :category_id, :description, :price, :delivery_time, :active)
+      params.require(:listing).permit(:title, :image, :category_id, :description, :price, :delivery_time, :active, :tag_list)
     end
 end
 

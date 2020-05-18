@@ -68,3 +68,9 @@ gem "faker", "~> 2.11"
 gem "bulma-rails", "~> 0.8.0"
 
 gem "aws-sdk-s3", "~> 1.64"
+
+gem "acts_as_favoritor", "~> 5.0"
+
+gem "acts-as-taggable-on", "~> 6.5"
+
+gem "font-awesome-rails", "~> 4.7"
