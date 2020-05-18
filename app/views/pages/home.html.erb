@@ -17,15 +17,20 @@
   </div>
 </section>
 
-<div class="columns is-multiline has-text-centered">
-  <div class="column is-half">
-    <h1 class="title">Top Listings</h1>
-    <div class="columns">
-      <%= render partial: "popular_listing", collection: @popular_listings %>
-    
+<div class="section">
+  <div class="columns has-text-centered">
+    <div class="column is-half">
+      <h1 class="title">Top Listings</h1>
+      <div class="columns">
+        <%= render partial: "popular_listing", collection: @popular_listings %>
+      
+      </div>
     </div>
-  </div>
-  <div class="column is-half">
-    <h1 class="title">Popular Tags</h1>
+    <div class="column is-half">
+      <h1 class="title">Popular Tags</h1>
+      <div class="tags are-medium">
+        <%= render partial: "shared/tag", collection: @tags %>
+      </div>
+    </div>
   </div>
 </div>
