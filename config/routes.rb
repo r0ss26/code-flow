@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users do
-    resource :profile do
-      resources :reviews
-    end
+    resource :profile
+    resources :reviews
+  end
   end
   
   # Dashboard is a singular resource because each user
