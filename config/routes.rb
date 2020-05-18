@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   end
 
   resources :listings do
+    put "favorite"
+    patch "favorite"
     resources :orders
   end
 
