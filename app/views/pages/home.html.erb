@@ -17,10 +17,13 @@
   </div>
 </section>
 
-<div class="columns has-text-centered">
+<div class="columns is-multiline has-text-centered">
   <div class="column is-half">
     <h1 class="title">Top Listings</h1>
-    <%= @popular_listings %>
+    <div class="columns">
+      <%= render partial: "popular_listing", collection: @popular_listings %>
+    
+    </div>
   </div>
   <div class="column is-half">
     <h1 class="title">Popular Tags</h1>

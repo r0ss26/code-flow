@@ -27,7 +27,7 @@
           <p class='stat-key'>Reviews</p>
         </div>
         <div class='column is-2-tablet is-4-mobile has-text-centered'>
-          <p class='stat-val'>5</p>
+          <p class='stat-val'><%= @avg_rating ? @avg_rating : "--" %></p>
           <p class='stat-key'>Avg. Rating</p>
         </div>
       </div>
@@ -36,13 +36,13 @@
       <div class='tabs is-fullwidth is-medium'>
         <ul>
           <li class='link'>
+            <%= link_to "Listings", listings_user_profile_path(params[:user_id]) %>
+          </li>
+          <li class='link'>
             <%= link_to "Education", education_user_profile_path(params[:user_id]) %>
           </li>
           <li class='link is-active'>
              <%= link_to "Employment", employment_user_profile_path(params[:user_id]) %>
-          </li>
-          <li class='link'>
-            <%= link_to "Listings", listings_user_profile_path(params[:user_id]) %>
           </li>
           <li class='link'>
             <%= link_to "Reviews", reviews_user_profile_path(params[:user_id]) %>

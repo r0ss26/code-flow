@@ -26,6 +26,11 @@
     <%= collection_select(:listing, :category_id, Category.all, :id, :name) %>
   </div>
 
+  <div class="tag-list">
+    <%= form.label "Tags (comma separated, e.g. python, backend)" %>
+    <%= form.text_field :tag_list %>
+  </div>
+
   <div class="field">
     <%= form.label :description, class: "label" %>
     <%= form.text_field :description, class: "input" %>

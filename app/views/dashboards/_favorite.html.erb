@@ -1,0 +1,38 @@
+<div class="column is-one-fifth">
+  <div class="card">
+    <header class="card-header">
+      <p class="card-header-title is-centered">
+        <%= favorite.title %>
+      </p>
+    </header>
+    <div class="card-image">
+      <figure class="image is-4by3">
+        <%= image_tag  favorite.image if favorite.image.attached?%>
+        <%= image_tag  "https://bulma.io/images/placeholders/1280x960.png" if !favorite.image.attached? %>
+      </figure>
+    </div>
+    <div class="card-content">
+      <div class="media">
+        <div class="media-left">
+          <figure class="image is-48x48">
+            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+          </figure>
+        </div>
+        <div class="media-content">
+          <p class="title is-4"><%= "#{favorite.user.first_name} #{favorite.user.middle_name[0]}. #{favorite.user.last_name}" %></p>
+          <p class="subtitle is-6">$<%= favorite.price / 100 %></p>
+        </div>
+      </div>
+
+      <div class="content">
+        <%= favorite.description %>.
+        <br>
+        <time datetime="<%= favorite.updated_at %>"><%= favorite.updated_at.localtime.to_formatted_s(:short) %></time>
+      </div>
+    </div>
+    <footer class="card-footer">
+      <%= link_to "View Listing", listing_path(favorite), class: "card-footer-item" %>
+      <%= link_to "Purchase", new_listing_order_path(favorite), class: "card-footer-item" %>
+  </footer>
+  </div>
+</div>
