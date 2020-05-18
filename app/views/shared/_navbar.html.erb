@@ -20,6 +20,9 @@
       </div>
     </div>
     <div class="navbar-end">
+      <div class="navbar-item">   
+        <%= link_to "Messages", conversations_path, class: "button is-link is-rounded" %>
+      </div>
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
           Account
@@ -34,10 +37,10 @@
           </div>
           <hr class="navbar-divider">
           <div class="navbar-item">
-            <%= link_to "Profile", root_path %>
+            <%= link_to "Profile", user_profile_path(current_user) %>
           </div>
           <div class="navbar-item">
-            <%= link_to "Settings", edit_user_registration_path %>
+            <%= link_to "Account Settings", edit_user_registration_path %>
           </div>
         </div>
       </div>

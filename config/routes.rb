@@ -4,7 +4,14 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users do
-    resource :profile
+    resource :profile do
+      member do
+        get "education"
+        get "employment"
+        get "listings"
+        get "reviews"
+      end
+    end
     resources :reviews
   end
   
