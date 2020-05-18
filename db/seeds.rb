@@ -63,6 +63,10 @@ titles = ["Javascript Help",
          "I will be your code tutor"]
 
 # Create listings for random users
+tags = []
+for i in 0..50
+  tags.push(Faker::Hacker.adjective)
+end
 for i in 0...100
   user = User.all.sample
   user.listings.create(title: titles.sample,
@@ -70,7 +74,8 @@ for i in 0...100
                        description: Faker::Lorem.paragraphs(number: 2).join("\n"),
                        price: (rand(5..50) + 1) * 100,
                        delivery_time: rand(1..7),
-                       active: [true, false].sample)
+                       active: [true, false].sample,
+                       tag_list: tags.sample(rand(1..8)))
   puts "Listing #{i} created"
 end
 
