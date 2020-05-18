@@ -64,8 +64,14 @@ class ListingsController < ApplicationController
   end
 
   def favorite
-    current_user.favorite(@listing)
-    redirect_to(:back)
+    @listing = Listing.find(params[:listing_id])
+    if current_user.favorited?(@listing)
+      current_user.unfavorite(@listing)
+    else
+      current_user.favorite(@listing)
+    end
+
+    redirect_back fallback_location: listings_path
   end
 
   private
