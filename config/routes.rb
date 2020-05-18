@@ -17,12 +17,13 @@ Rails.application.routes.draw do
   
   # Dashboard is a singular resource because each user
   # will only have one dashboard.
-  resource :dashboard, only: [:show] do
+  resource :dashboard do
     member do
       get "listings"
       get "sales"
       get "purchases"
       get "reviews"
+      get "favorites"
     end
   end
 

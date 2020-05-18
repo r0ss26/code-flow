@@ -15,8 +15,8 @@ class DashboardsController < ApplicationController
     @past_purchases = @purchases.where(completed: true)
   end
 
-  def favourites
-
+  def favorites
+    @favorites = current_user.favorited_by_type('Listing')
   end
 
   def listings
