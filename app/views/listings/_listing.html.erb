@@ -33,6 +33,9 @@
     <footer class="card-footer">
       <%= link_to "View Listing", listing_path(listing), class: "card-footer-item" %>
       <%= link_to "Purchase", new_listing_order_path(listing), class: "card-footer-item" %>
+      <%= link_to listing_favorite_path(listing), method: "put", class: "card-footer-item" do %>
+        <%= current_user.favorited?(listing, scope: :favorite) ? fa_icon("heart") : fa_icon("heart-o") %>
+      <% end %>
   </footer>
   </div>
 </div>
