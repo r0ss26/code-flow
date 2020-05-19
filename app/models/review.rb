@@ -1,5 +1,6 @@
 class Review < ApplicationRecord
   validates :rating, :description, :review_poster_id, :review_receiver_id, presence: true
+  validates :rating, :inclusion => 1..5
   validate :cannot_review_self
   belongs_to :order
   belongs_to :review_poster, class_name: "User"
