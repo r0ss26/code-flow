@@ -74,3 +74,7 @@ gem "acts_as_favoritor", "~> 5.0"
 gem "acts-as-taggable-on", "~> 6.5"
 
 gem "font-awesome-rails", "~> 4.7"
+
+gem "will_paginate", "~> 3.3"
+
+gem "will_paginate-bulma", "~> 1.0"
