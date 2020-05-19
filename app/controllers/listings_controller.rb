@@ -1,8 +1,8 @@
 class ListingsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :favorite]
-  before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  before_action :set_categories, only: [:new, :edit]
+  before_action :set_listing, only: [:show]
   before_action :set_user_listing, only: [:edit, :update, :destroy]
-  before_action :set_categories, only: [:new, :create, :edit, :update]
 
   # GET /listings
   # GET /listings.json
@@ -45,7 +45,7 @@ class ListingsController < ApplicationController
   def update
     respond_to do |format|
       if @listing.update(listing_params)
-        format.html { redirect_to @listing, notice: 'Listing was successfully updated.' }
+        format.html { redirect_to listings_dashboard_path, notice: 'Listing was successfully updated.' }
         format.json { render :show, status: :ok, location: @listing }
       else
         format.html { render :edit }
@@ -82,6 +82,8 @@ class ListingsController < ApplicationController
   end
 
   def set_user_listing
+    @listing = current_user.listings.find_by_id(params[:id])
+
     if current_user != @listing.user
       redirect_to listing_path(@listing), alert: "Sorry, this listing belongs to someone else"
     end
