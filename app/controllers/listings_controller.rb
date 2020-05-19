@@ -64,7 +64,7 @@ class ListingsController < ApplicationController
   end
 
   def favorite
-    @listing = Listing.find(params[:listing_id])
+    @listing = Listing.includes(:user).find(params[:listing_id])
     if current_user.favorited?(@listing)
       current_user.unfavorite(@listing)
     else
@@ -75,20 +75,25 @@ class ListingsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_listing
-      @listing = Listing.find(params[:id])
-    end
 
-    def set_user_listing
-      if current_user != @listing.user
-        redirect_to listing_path(@listing), alert: "Sorry, this listing belongs to someone else"
-      end
-    end
+  def set_listing
+    @listing = Listing.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def listing_params
-      params.require(:listing).permit(:title, :image, :category_id, :description, :price, :delivery_time, :active, :tag_list)
+  def set_user_listing
+    if current_user != @listing.user
+      redirect_to listing_path(@listing), alert: "Sorry, this listing belongs to someone else"
     end
+  end
+
+  def set_categories
+    @categories = Category.all
+    @category_values = @categories.map{|c| [c.name, c.id]}
+  end
+
+  # Only allow a list of trusted parameters through.
+  def listing_params
+    params.require(:listing).permit(:title, :image, :category_id, :description, :price, :delivery_time, :active, :tag_list)
+  end
 end
 
