@@ -11,5 +11,6 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :received_reviews, class_name: "Review", foreign_key: "review_receiver_id"
   has_many :posted_reviews, class_name: "Review", foreign_key: "review_poster_id"
+  has_one_attached :image
   acts_as_favoritor
 end
