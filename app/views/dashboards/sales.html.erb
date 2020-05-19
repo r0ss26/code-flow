@@ -14,7 +14,7 @@
         </tr>
       </thead>
       <tbody>
-        <%= render partial: "order", collection: @active_orders %>
+        <%= render partial: "sale", collection: @active_orders, as: :order %>
       </tbody>
     </table>
 
@@ -34,7 +34,7 @@
         </tr>
       </thead>
       <tbody>
-        <%= render partial: "order", collection: @past_orders %>
+        <%= render partial: "sale", collection: @past_orders, as: :order %>
       </tbody>
     </table>
   <% end %>

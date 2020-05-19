@@ -1,10 +1,17 @@
 <tr>
   <td><%= order.listing.title %></td>
-  <td><%= order.cost %></td>
+  <td><%= "$#{order.cost}" %></td>
   <td><%= "#{order.seller.first_name} #{order.seller.middle_name[0]}. #{order.seller.last_name}" %></td>
   <td><%= link_to "View Listing", listing_path(order.listing) %></td>
+  <% if !order.completed %>
+  <td><%= link_to "Message Tutor", conversations_path(sender_id: current_user.id, recipient_id: order.listing.user.id), method: "post"%></td>
+  <% end %>
   <% if order.completed %>
-  <td><%= link_to "Leave a Review", root_path %></td>
+    <% if !order.review %>
+      <td><%= link_to "Leave a Review", new_listing_order_review_path(order.listing.id, order.id) %></td>
+    <% else %>
+      <td><%= link_to "Edit Your Review", edit_listing_order_review_path(order.listing.id, order.id, order.review.id) %></td>
+    <% end %>
   <% end %>
 </tr>
 

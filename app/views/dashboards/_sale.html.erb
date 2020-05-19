@@ -1,0 +1,11 @@
+<tr>
+  <td><%= order.listing.title %></td>
+  <td><%= "$#{order.cost}" %></td>
+  <td><%= order.paid %></td>
+  <td><%= "#{order.seller.first_name} #{order.seller.middle_name[0]}. #{order.seller.last_name}" %></td>
+  <td><%= order.listing.delivery_time %></td>
+  <% if !order.completed %>
+    <td><%= link_to "Mark as Complete",  mark_complete_listing_order_path(order.listing, order), method: :put %></td>
+  <% end %>
+</tr>
+

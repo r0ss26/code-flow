@@ -1,7 +1,9 @@
 <div class="column">
   <div class="title">Your Reviews</div>
 
-  <% if !@reviews.empty? %>
+  <% if @reviews.empty? %>
+    <h4 class="title">You do not have any reviews</h4>
+  <% else %>
 
     <table class="table is-hoverable">
       <thead>
