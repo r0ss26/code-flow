@@ -1,57 +1,70 @@
-<%= form_with(model: listing, local: true) do |form| %>
-  <% if listing.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
+  <%= form_with(model: listing, local: true) do |form| %>
+    <% if listing.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
 
-      <ul>
-      <% listing.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% listing.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :title %>
+      <%= form.text_field :title %>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :title, class: "label" %>
-    <%= form.text_field :title, class: "input" %>
-  </div>
+    <div class="field file">
+      <%= form.label "Image" %>
+      <%= form.label :image, class: "file-label" do %>
+        <%= form.file_field :image, class: "file-input" %>
+        <span class="file-cta">
+          <span class="file-icon">
+            <i class="fas fa-upload"></i>
+          </span>
+          <span class="file-label">
+            Choose a file…
+          </span>
+        </span>
+      <% end %>
+    </div>
 
-  <div>
-    <%= form.label :image, class: "label" %> <span>(Images that are not 4:3 will be cropped to fit on the listings page.)</span>
-    <%= form.file_field :image, accept: 'image/png,image/jpeg,image/jpg' %>
-  </div>
+    <div class="field">
+      <%= form.label "Category" %>
+      <div class="select">
+        <%= form.select(:category_id, options_for_select(@category_values, 1)) %>
+      </div>
+    </div>
 
-  <div class="field select">
-    <%= form.label :category, class: "label" %>
-    <%= collection_select(:listing, :category_id, Category.all, :id, :name) %>
-  </div>
+    <div class="field">
+      <%= form.label :description %>
+      <%= form.text_area :description, class: "textarea" %>
+    </div>
 
-  <div class="tag-list">
-    <%= form.label "Tags (comma separated, e.g. python, backend)" %>
-    <%= form.text_field :tag_list %>
-  </div>
+    <div class="field">
+      <%= form.label "Price ($)" %>
+      <%= form.text_field :price %>
+    </div>
 
-  <div class="field">
-    <%= form.label :description, class: "label" %>
-    <%= form.text_field :description, class: "input" %>
-  </div>
+    <div class="field">
+      <%= form.label "Delivery Time (days)" %>
+      <%= form.text_field :delivery_time %>
+    </div>
 
-  <div class="field">
-    <%= form.label :price, class: "label" %>
-    <%= form.text_field :price, class: "input" %>
-  </div>
+    <div class="field tag-list">
+      <%= form.label "Tags (comma separated)" %>
+      <%= form.text_field :tag_list %>
+    </div>
 
-  <div class="field">
-    <%= form.label :delivery_time, class: "label" %>
-    <%= form.text_field :delivery_time, class: "input" %>
-  </div>
 
-  <div class="field">
-    <%= form.label :active, class: "label" %>
-    <%= form.check_box :active, class: "checkbox" %>
-  </div>
+    <div class="field">
+      <%= form.label :active %>
+      <%= form.check_box :active %>
+    </div>
 
-  <div class="actions">
-    <%= form.submit "Create Listing", class: "button" %>
-  </div>
+    <div class="actions">
+      <%= form.submit %>
+    </div>
 <% end %>

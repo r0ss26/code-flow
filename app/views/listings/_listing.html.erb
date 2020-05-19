@@ -19,8 +19,8 @@
           </figure>
         </div>
         <div class="media-content">
-          <p class="title is-4"><%= "#{listing.user.first_name} #{listing.user.middle_name[0]}. #{listing.user.last_name}" %></p>
-          <p class="subtitle is-6">$<%= listing.price / 100 %></p>
+          <p class="title is-4"><%= link_to "#{listing.user.first_name} #{listing.user.middle_name[0]}. #{listing.user.last_name}", user_profile_path(listing.user) %></p>
+          <p class="subtitle is-6">$<%= cents_to_dollars(listing.price) %></p>
         </div>
       </div>
 
@@ -34,7 +34,7 @@
       <%= link_to "View Listing", listing_path(listing), class: "card-footer-item" %>
       <%= link_to "Purchase", new_listing_order_path(listing), class: "card-footer-item" %>
       <%= link_to listing_favorite_path(listing), method: "put", class: "card-footer-item" do %>
-        <%= current_user.favorited?(listing, scope: :favorite) ? fa_icon("heart") : fa_icon("heart-o") %>
+        <%= current_user && current_user.favorited?(listing, scope: :favorite) ? fa_icon("heart") : fa_icon("heart-o") %>
       <% end %>
   </footer>
   </div>

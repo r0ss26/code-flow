@@ -5,3 +5,7 @@
     <%= render @listings %>  
   </div>
 </div>
+
+<div class="paginate-container">
+  <%= will_paginate @listings, renderer: BulmaPagination::Rails %>
+</div>

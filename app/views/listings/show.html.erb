@@ -1,32 +1,46 @@
-<div class="columns">
-  <div class="column is-half">
-    <div class="box">
-    <div class="media-content">
-      <div class="content">
-        <div class="title"><%= @listing.title %></div>  
-        <div class="subtitle">
-        <%= "#{@listing.user.first_name} #{@listing.user.middle_name[0]}. #{@listing.user.last_name}" %>
-        <figure class="image is-48x48">
-            <img class="is-rounded" src="https://bulma.io/images/placeholders/48x48.png" alt="Placeholder image">
-        </figure>
+<div class="container">
+  <div class="columns is-vcentered">
+    <div class="column is-half">
+      <div class="box">
+      <div class="media-content">
+        <div class="content">
+          <div class="title"><%= @listing.title %></div>  
+          <div class="subtitle">
+            <%= "#{@listing.user.first_name} #{@listing.user.middle_name[0]}. #{@listing.user.last_name}" %>
+            <figure class="image is-48x48">
+                <img class="is-rounded" src="https://bulma.io/images/placeholders/48x48.png" alt="Placeholder image">
+            </figure>
+          </div>
+          <hr>
+          <div class="box is-inline"><strong><%= @listing.category.name %></strong></div>
+          <div class="box is-inline"><strong>$<%= cents_to_dollars(@listing.price) %></strong></div>
+          <div class="box is-inline"><strong>Delivery Time: <%= @listing.delivery_time %> Days</strong></div>
+          <div class="box is-inline">
+            <%= link_to listing_favorite_path(@listing), method: "put" do %>
+              <%= current_user && current_user.favorited?(@listing, scope: :favorite) ? fa_icon("heart") : fa_icon("heart-o") %>
+            <% end %> 
+          </div>
+          <hr>
+          <div class="tags">
+            <%= render partial: "shared/tag", collection: @listing.tags %>
+          </div>
+          <figure class="image is-4x3">
+            <%= image_tag  @listing.image if @listing.image.attached?%>
+            <%= image_tag  "https://bulma.io/images/placeholders/1280x960.png" if !@listing.image.attached? %>
+          </figure>
+          <p>
+            <strong>Description:</strong>
+            <%= @listing.description %>
+          </p>
         </div>
-        <hr>
-        <div class="box is-inline"><strong><%= @listing.category.name %></strong></div>
-        <div class="box is-inline"><strong>$<%= @listing.price / 100 %></strong></div>
-        <div class="box is-inline"><strong>Delivery Time: <%= @listing.delivery_time %> Days</strong></div>
-        <figure class="image is-4x3">
-          <%= image_tag  @listing.image if @listing.image.attached?%>
-          <%= image_tag  "https://bulma.io/images/placeholders/1280x960.png" if !@listing.image.attached? %>
-        </figure>
-        <p>
-          <strong>Description:</strong>
-          <%= @listing.description %>
-        </p>
+      </div>
       </div>
     </div>
+    <div class="column is-one-quarter is-offset-1 is-vcentered">
+      <div class="box">
+        <h4 class="title">Total: $<%= cents_to_dollars(@listing.price) %></h4>
+        <%= link_to "Purchase",  new_listing_order_path(@listing), class: "button is-success is-large is-fullwidth"%>
+      </div>
     </div>
-  </div>
-  <div class="column is-one-quarter is-offset-1">
-    <%= link_to "Purchase",  new_listing_order_path(@listing), class: "button is-large is-fullwidth"%>
   </div>
 </div>

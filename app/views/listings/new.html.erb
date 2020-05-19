@@ -1,5 +1,12 @@
-<h1>New Listing</h1>
 
-<%= render 'form', listing: @listing %>
-
-<%= link_to 'Back', listings_path %>
+<div class="section">
+  <div class="columns">
+    <div class="column is-one-third"></div>
+    <div class="column is-one-third">
+      <h1 class="title">New Listing</h1>
+      <%= render 'form', listing: @listing %>
+      <%= link_to 'Back', listings_path %>
+    </div>
+    <div class="column is-one-third"></div>
+  </div>
+</div>
