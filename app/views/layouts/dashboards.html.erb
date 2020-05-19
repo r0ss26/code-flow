@@ -1,25 +1,13 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>CodeFlow</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<% content_for :content do %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-    <%= render "shared/navbar" %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-    <div class="columns">
-      <div class="column is-narrow">
-        <%= render "shared/dashboard_menu" %>
-      </div>
-      <%= yield %>
+  <div class="columns">
+    <div class="column is-narrow">
+      <%= render "shared/dashboard_menu" %>
     </div>
-  </body>
-</html>
+    <div class="container">
+      <%= content_for?(:dashboard_content) ? yield(:dashboard_content) : yield %>
+    </div>
+  </div>
+<% end %>
+
+<%= render template: "layouts/application" %>
