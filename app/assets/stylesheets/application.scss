@@ -12,10 +12,9 @@
  *
  *= require_tree .
  *= require_self
- *= require font-awesome
  */
 
- @import "font-awesome";
+ @import "font_awesome5_webfont";
  @import "bulma";
 
  .navbar-brand { 
