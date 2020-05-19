@@ -1,11 +1,13 @@
 class EmploymentsController < ApplicationController
-  before_action :set_employment, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
   before_action :set_user
+  before_action :set_employment, only: [:show]
+  before_action :set_user_employment, only: [:edit, :update, :destroy]
 
   # GET /employments
   # GET /employments.json
   def index
-    @employments = Employment.all
+    @employments = current_user.employments
   end
 
   # GET /employments/1
@@ -25,11 +27,11 @@ class EmploymentsController < ApplicationController
   # POST /employments
   # POST /employments.json
   def create
-    @employment = Employment.new(employment_params)
+    @employment = current_user.employments.create(employment_params)
 
     respond_to do |format|
       if @employment.save
-        format.html { redirect_to @employment, notice: 'Employment was successfully created.' }
+        format.html { redirect_to user_profile_path(@user), notice: 'Employment was successfully created.' }
         format.json { render :show, status: :created, location: @employment }
       else
         format.html { render :new }
@@ -43,7 +45,7 @@ class EmploymentsController < ApplicationController
   def update
     respond_to do |format|
       if @employment.update(employment_params)
-        format.html { redirect_to @employment, notice: 'Employment was successfully updated.' }
+        format.html { redirect_to user_profile_path(@user), notice: 'Employment was successfully updated.' }
         format.json { render :show, status: :ok, location: @employment }
       else
         format.html { render :edit }
@@ -57,7 +59,7 @@ class EmploymentsController < ApplicationController
   def destroy
     @employment.destroy
     respond_to do |format|
-      format.html { redirect_to employments_url, notice: 'Employment was successfully destroyed.' }
+      format.html { redirect_to user_profile_path(@user), notice: 'Employment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -70,6 +72,14 @@ class EmploymentsController < ApplicationController
 
     def set_user
       @user = User.find(params[:user_id])
+    end
+
+    def set_user_employment
+      @employment = current_user.employments.find_by_id(params[:id])
+
+      if @employment == nil
+        redirect_to user_profile_path(@user), flash: { alert: "You do not own this listing" }
+      end
     end
 
     # Only allow a list of trusted parameters through.

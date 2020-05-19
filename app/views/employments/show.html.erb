@@ -20,5 +20,5 @@
   <%= @employment.end_date %>
 </p>
 
-<%= link_to 'Edit', edit_employment_path(@employment) %> |
-<%= link_to 'Back', employments_path %>
+<%= link_to 'Edit', edit_user_employment_path(@user, @employment) %> |
+<%= link_to 'Back', user_employments_path(@user) %>

@@ -20,9 +20,9 @@
         <td><%= employment.position %></td>
         <td><%= employment.start_date %></td>
         <td><%= employment.end_date %></td>
-        <td><%= link_to 'Show', employment %></td>
-        <td><%= link_to 'Edit', edit_employment_path(employment) %></td>
-        <td><%= link_to 'Destroy', employment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', user_employment_path(@user, employment) %></td>
+        <td><%= link_to 'Edit', edit_user_employment_path(@user, employment) %></td>
+        <td><%= link_to 'Destroy', user_employment_path(@user, employment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Employment', new_employment_path %>
+<%= link_to 'New Employment', new_user_employment_path %>
