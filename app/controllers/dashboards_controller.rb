@@ -10,7 +10,7 @@ class DashboardsController < ApplicationController
   end
 
   def purchases
-    @purchases = Order.where(buyer_id: current_user.id)
+    @purchases = Order.includes(:listing, :seller).where(buyer_id: current_user.id)
     @current_purchases = @purchases.where(completed: false)
     @past_purchases = @purchases.where(completed: true)
   end
