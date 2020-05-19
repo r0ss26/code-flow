@@ -1,52 +1,53 @@
 <div class='section profile-heading'>
-      <div class='columns is-mobile is-multiline'>
-        <div class='column is-2'>
-          <span class='header-icon user-profile-image'>
-            <img alt='' src='http://placehold.it/300x225'>
-          </span>
-        </div>
-        <div class='column is-4-tablet is-10-mobile name'>
-          <p>
-            <span class='title is-bold'>Paul Miller</span>
-            <br>
-            <a class='button is-primary is-outlined' href='#' id='edit-preferences' style='margin: 5px 0'>
-              Edit Profile
-            </a>
-            <br>
-          </p>
-          <p class='tagline'>
-            The users profile bio would go here, of course. It could be two lines or more or whatever. We should probably limit the amount of characters to ~500 at most though.
-          </p>
-        </div>
-        <div class='column is-2-tablet is-4-mobile has-text-centered'>
-          <p class='stat-val'><%= @user.listings.count  %></p>
-          <p class='stat-key'>Listings</p>
-        </div>
-        <div class='column is-2-tablet is-4-mobile has-text-centered'>
-          <p class='stat-val'><%= @reviews.count %></p>
-          <p class='stat-key'>Reviews</p>
-        </div>
-        <div class='column is-2-tablet is-4-mobile has-text-centered'>
-          <p class='stat-val'><%= @avg_rating ? @avg_rating : "--" %></p>
-          <p class='stat-key'>Avg. Rating</p>
-        </div>
-      </div>
+  <div class='columns is-mobile is-multiline'>
+    <div class='column is-2'>
+      <span class='header-icon user-profile-image'>
+        <img alt='' src='http://placehold.it/300x225'>
+      </span>
     </div>
-    <div class='profile-options is-fullwidth'>
-      <div class='tabs is-fullwidth is-medium'>
-        <ul>
-          <li class='link'>
-            <%= link_to "Listings", listings_user_profile_path(params[:user_id]) %>
-          </li>
-          <li class='link'>
-            <%= link_to "Education", education_user_profile_path(params[:user_id]) %>
-          </li>
-          <li class='link is-active'>
-             <%= link_to "Employment", employment_user_profile_path(params[:user_id]) %>
-          </li>
-          <li class='link'>
-            <%= link_to "Reviews", reviews_user_profile_path(params[:user_id]) %>
-          </li>
-        </ul>
-      </div>
+    <div class='column is-4-tablet is-10-mobile name'>
+      <p>
+        <span class='title is-bold'><%= "#{@user.first_name} #{@user.middle_name[0]}. #{@user.last_name}" %></span>
+        <br>
+        <% if @user == current_user %>
+          <%= link_to "Edit Profile", edit_user_registration_path, class: "button is-primary is-outlined"%>
+        <% end %>
+        <br>
+      </p>
+      <p class='tagline'>
+        <%= "Location: #{@user.city}, #{@user.country}" %>
+      </p><br>
+      <p class='tagline'>
+        <%= @user.biography %>
+      </p>
     </div>
+      <div class='column is-2-tablet is-4-mobile has-text-centered'>
+        <p class='stat-val'><%= @user.listings.count  %></p>
+        <p class='stat-key'>Listings</p>
+      </div>
+      <div class='column is-2-tablet is-4-mobile has-text-centered'>
+        <p class='stat-val'><%= @reviews.count %></p>
+        <p class='stat-key'>Reviews</p>
+      </div>
+      <div class='column is-2-tablet is-4-mobile has-text-centered'>
+        <p class='stat-val'><%= @avg_rating ? @avg_rating : "--" %></p>
+        <p class='stat-key'>Avg. Rating</p>
+      </div>
+  </div>
+  <div class="columns has-text-centered">
+    <div class="column is-one-third">
+      <div class="title">Employment</div>
+      <%= render partial: "employment", collection: @employments %>
+    </div>
+    <div class="column is-one-third">
+      <div class="title">Education</div>
+      <%= render partial: "education", collection: @educations %>
+    </div>
+    <div class="column is-one-third">
+      <div class="title">Reviews</div>
+        <%= render partial: "review", collection: @reviews %>
+    </div>
+  </div>
+</div>
+</div>
+
