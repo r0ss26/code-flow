@@ -1,5 +1,3 @@
-# config/initializers/bulma_form_builder.rb
-
 # There are a few things to mention:
 # 1) See the article at the URL for sample code with screenshots and more information.
 #    URL: https://medium.com/@dyanagi/a-bulma-form-builder-for-ruby-on-rails-applications-aef780808bab
