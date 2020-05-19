@@ -5,6 +5,7 @@
   <td><%= "#{order.buyer.first_name} #{order.buyer.middle_name[0]}. #{order.buyer.last_name}" %></td>
   <td><%= order.listing.delivery_time %></td>
   <% if !order.completed %>
+    <td><%= link_to "Message Student", conversations_path(sender_id: current_user.id, recipient_id: order.listing.user.id), method: "post"%></td>
     <td><%= link_to "Mark as Complete",  mark_complete_listing_order_path(order.listing, order), method: :put %></td>
   <% end %>
 </tr>

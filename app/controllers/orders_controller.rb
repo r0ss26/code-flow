@@ -1,15 +1,16 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy, :mark_complete]
   before_action :authenticate_user!
-  before_action :set_listing, only: [:index, :new, :create]
+  before_action :set_listing
+
+  before_action :set_user_order, only: [:mark_complete]
+
+
+  before_action :set_listing_order, only: [:show, :edit, :update, :destroy, :mark_complete]
 
   # GET /orders
   # GET /orders.json
 
   def index
-    if @listing.user.id != current_user.id
-      redirect_to listing_path(@listing)
-    end
     @orders = Order.where(listing_id: @listing.id)
   end
 
@@ -66,6 +67,10 @@ class OrdersController < ApplicationController
   end
 
   def mark_complete
+    if !@order.paid
+      redirect_to sales_dashboard_path, flash: { alert: "You cannot complete an order that has not been paid for."}
+    end
+    
     @order.completed = true
     @order.save
     redirect_to sales_dashboard_path
@@ -86,6 +91,10 @@ class OrdersController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_order
     @order = Order.find(params[:id])
+  end
+
+  def set_user_order
+    @order = Order.where(seller_id: current_user.id)
   end
 
   # Only allow a list of trusted parameters through.

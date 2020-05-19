@@ -1,31 +1,34 @@
 <div class="container">
- <h3 class="title">Mailbox</h3>
- <div>
-   <% @conversations.each do |conversation| %>
-   <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
-    <% if conversation.sender_id == current_user.id %>
-      <% recipient = User.find(conversation.recipient_id) %>
-    <% else %>
-      <% recipient = User.find(conversation.sender_id) %>
+  <div class="section">
+    <h3 class="title">Mailbox</h3>
+    <div>
+      <% @conversations.each do |conversation| %>
+        <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+          <% if conversation.sender_id == current_user.id %>
+            <% recipient = User.find(conversation.recipient_id) %>
+          <% else %>
+            <% recipient = User.find(conversation.sender_id) %>
+          <% end %>
+          <%= link_to recipient.first_name, conversation_messages_path(conversation), class: "button"%>
+        <% end %>
+      <% end %>
+    </div>
+    </div>
+
+    <% if false %>
+    <div class="container">
+    <h3 class="title">All Users</h3>
+      <div>
+      <% @users.each do |user| %>
+        <% if user.id != current_user.id %>
+        <div>
+      <%= user.first_name %> <%= link_to "Message me!", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: "post"%>
+    </div>
+      <% end %>
     <% end %>
-    <%= link_to recipient.first_name, conversation_messages_path(conversation), class: "button"%>
-   <% end %>
-  <% end %>
- </div>
-</div>
+    </div>
+    </div>
 
-<% if false %>
-<div class="container">
- <h3 class="title">All Users</h3>
-  <div>
-   <% @users.each do |user| %>
-    <% if user.id != current_user.id %>
-     <div>
-   <%= user.first_name %> <%= link_to "Message me!", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: "post"%>
- </div>
-  <% end %>
- <% end %>
- </div>
+    <% end %>
+  </div>
 </div>
-
-<% end %>
