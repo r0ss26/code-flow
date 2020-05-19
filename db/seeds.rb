@@ -16,35 +16,34 @@ for i in 0...50
                      city: Faker::Address.city,
                      country: Faker::Address.country,
                      biography: Faker::Lorem.paragraphs(number: 2).join("\n"))
-  puts "User #{i} created"
-  puts user.errors.full_messages if user.errors.any?
+  puts user.errors.any? ? user.errors.full_messages : "User #{i} created"
 end
 
 # Test User
 user = User.create(email: "test@codeflow.com",
-  password: "123456",
-  first_name: "Test",
-  middle_name: Faker::Name.middle_name,
-  last_name: "Tester")
+                   password: "123456",
+                   first_name: "Ross",
+                   middle_name: "Andrew",
+                   last_name: "Baker")
 
 # Create employments for random users
 for i in 0...100
   user = User.all.sample
-  user.employments.create(company: Faker::Company.name,
+  employment = user.employments.create(company: Faker::Company.name,
                           position: Faker::Company.profession,
                           start_date:Faker::Date.in_date_period(year: 2016),
                           end_date:Faker::Date.in_date_period(year: 2018))
-  puts "Employment #{i} created"
+  puts employment.errors.any? ? employmen.errors.full_messages : "Employment #{i} created"
 end
 
 # Create educations for random users
 for i in 0...100
   user = User.all.sample
-  user.educations.create(school: Faker::University.name,
+  education = user.educations.create(school: Faker::University.name,
                           degree: Faker::Educator.course_name,
                           start_date:Faker::Date.in_date_period(year: 2015),
                           end_date:Faker::Date.in_date_period(year: 2018))
-  puts "Education #{i} created"
+  puts education.errors.any? ? education.errors.full_messages : "Education #{i} created"
 end
 
 # Create the categories that a listing can have
@@ -69,14 +68,14 @@ for i in 0..50
 end
 for i in 0...100
   user = User.all.sample
-  user.listings.create(title: titles.sample,
+  listing = user.listings.create(title: titles.sample,
                        category_id: rand(categories.length) + 1,
                        description: Faker::Lorem.paragraphs(number: 2).join("\n"),
-                       price: (rand(5..50) + 1) * 100,
+                       price: (rand(5..50) + 1),
                        delivery_time: rand(1..7),
                        active: [true, false].sample,
                        tag_list: tags.sample(rand(1..8)))
-  puts "Listing #{i} created"
+  puts listing.errors.any? ? listing.errors.full_messages : "Listing #{i} created"
 end
 
 # Create orders for random users
@@ -86,12 +85,13 @@ for i in 0..50
   while buyer_id == listing.user_id
     buyer_id = User.all.sample.id
   end
-  listing.orders.create(buyer_id: buyer_id,
+
+  order = listing.orders.create(buyer_id: buyer_id,
                         seller_id: listing.user_id,
                         cost: listing.price,
                         paid: [true, false].sample,
                         completed: [true, false].sample)
-  puts "Order #{i} created"
+  puts order.errors.any? ? order.errors.full_messages : "Order #{i} created"
 end
 
 # Create reviews
