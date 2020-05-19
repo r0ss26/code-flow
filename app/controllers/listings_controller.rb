@@ -1,12 +1,13 @@
 class ListingsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :favorite]
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :seller]
-  before_action :set_user_listing, only: [:edit, :update, :delete]
-  
+  before_action :set_user_listing, only: [:edit, :update, :destroy]
+  before_action :set_categories, only: [:new, :create, :edit, :update]
+
   # GET /listings
   # GET /listings.json
   def index
-    @listings = Listing.where(active: true)
+    @listings = Listing.includes(:user).where(active:true).paginate(page: params[:page], per_page: 15)
   end
 
   # GET /listings/1
