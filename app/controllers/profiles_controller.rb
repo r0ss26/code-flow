@@ -1,31 +1,20 @@
 class ProfilesController < ApplicationController
+  before_action :set_user
 
   def show
-    # @education_history = Education.all
-    # @employment_history = Employment.all
-    @user = User.find(params[:user_id])
-    @reviews = Review.where(review_receiver_id: params[:user_id])
-    puts @reviews
+
+    @educations = @user.educations
+    @employments = @user.employments
+    @reviews = Review.where(review_receiver_id: @user.id)
+
     if !@reviews.empty?
       @avg_rating = @reviews.average(:rating).round(2) 
     end
-    @listings = User.find(params[:user_id]).listings
   end
 
-  def education
-    @educations = User.find(params[:user_id]).educations
-  end
+  private
 
-  def employment
-    @employments = User.find(params[:user_id]).employments
+  def set_user
+    @user = User.includes(:educations, :employments).find(params[:user_id])
   end
-
-  def listings
-    @listings = User.find(params[:user_id]).listings
-  end
-
-  def reviews
-    @reviews = Review.where(review_receiver_id: params[:user_id])
-  end
-
 end
