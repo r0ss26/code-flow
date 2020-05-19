@@ -1,5 +1,5 @@
 <section class="hero is-medium has-bg-img">
-  <div class="hero-body">
+  <div class="hero-body">>
     <div class="container">
       <h1 class="title">
         Have your code reviewed by expert reviewers.
@@ -17,20 +17,12 @@
   </div>
 </section>
 
-<div class="section">
-  <div class="columns has-text-centered">
-    <div class="column is-half">
-      <h1 class="title">Top Listings</h1>
+<div class="columns has-text-centered has-background-light">
+  <div class="column is-full">
+    <div class="container">
+      <h1 class="title top-title">Top Listings</h1>
       <div class="columns">
         <%= render partial: "popular_listing", collection: @popular_listings %>
-      
       </div>
     </div>
-    <div class="column is-half">
-      <h1 class="title">Popular Tags</h1>
-      <div class="tags are-medium">
-        <%= render partial: "shared/tag", collection: @tags %>
-      </div>
-    </div>
-  </div>
 </div>
