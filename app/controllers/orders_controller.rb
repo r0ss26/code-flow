@@ -65,6 +65,12 @@ class OrdersController < ApplicationController
     end
   end
 
+  def mark_complete
+    @order.completed = true
+    @order.save
+    redirect_to sales_dashboard_path
+  end
+
   # DELETE /orders/1
   # DELETE /orders/1.json
   def destroy
