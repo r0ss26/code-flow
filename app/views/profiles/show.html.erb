@@ -41,6 +41,9 @@
     </div>
     <div class="column is-one-third">
       <div class="title">Education</div>
+      <% if @user == current_user %>
+        <%= link_to "Add", new_user_education_path(@user) %>
+      <% end %>
       <%= render partial: "education", collection: @educations %>
     </div>
     <div class="column is-one-third">

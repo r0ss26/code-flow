@@ -22,9 +22,9 @@ end
 # Test User
 user = User.create(email: "test@codeflow.com",
                    password: "123456",
-                   first_name: "Ross",
+                   first_name: "Test",
                    middle_name: "Andrew",
-                   last_name: "Baker")
+                   last_name: "Tester")
 
 # Create employments for random users
 for i in 0...100
@@ -40,9 +40,9 @@ end
 for i in 0...100
   user = User.all.sample
   education = user.educations.create(school: Faker::University.name,
-                          degree: Faker::Educator.course_name,
-                          start_date:Faker::Date.in_date_period(year: 2015),
-                          end_date:Faker::Date.in_date_period(year: 2018))
+                                     degree: Faker::Educator.course_name,
+                                     start_date:Faker::Date.in_date_period(year: 2015),
+                                     end_date:Faker::Date.in_date_period(year: 2018))
   puts education.errors.any? ? education.errors.full_messages : "Education #{i} created"
 end
 

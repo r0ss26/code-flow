@@ -23,7 +23,7 @@
         </div>
         <div class="media-content">
           <p class="title is-4"><%= link_to "#{popular_listing.user.first_name} #{popular_listing.user.middle_name[0]}. #{popular_listing.user.last_name}", user_profile_path(popular_listing.user) %></p>
-          <p class="subtitle is-6">$<%= cents_to_dollars(popular_listing.price) %></p>
+          <p class="subtitle is-6">$<%= popular_listing.price %></p>
         </div>
       </div>
     </div>
