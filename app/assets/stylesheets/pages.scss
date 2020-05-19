@@ -1,18 +1,20 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-body {
-  height: 100vh;
-}
+body { height: 100vh; }
+
+.menu { padding: 20px; }
 
 .has-bg-img { 
   background: url(image_path('hero.jpg'))center center; 
   background-size: cover; 
 }
 
-.hero-body {
+.hero {
+  .hero-body {
+    background-color: rgba(27, 27, 20, 0.9);
+  }
   .title, .subtitle { color: white; }
-  background-color: rgba(27, 27, 20, 0.9);
 }
 
-.menu { padding: 20px; }
+.top-title { padding-top: 15px; }

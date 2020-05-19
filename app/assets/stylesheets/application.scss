@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
  */
 
  @import "font-awesome";
@@ -23,3 +24,6 @@
     color: white;
   }
  }
+
+ .actions { text-align: center;}
+ 
