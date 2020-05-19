@@ -78,3 +78,5 @@ gem "will_paginate", "~> 3.3"
 gem "will_paginate-bulma", "~> 1.0"
 
 gem "font_awesome5_rails", "~> 1.1"
+
+gem "font-awesome-rails", "~> 4.7"
