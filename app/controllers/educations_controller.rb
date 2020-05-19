@@ -1,6 +1,8 @@
 class EducationsController < ApplicationController
-  before_action :set_education, only: [:show, :edit, :update, :destroy]
-  before_action :set_user, only: [:index, :show, :edit, :update, :destroy, :new, :create]
+  before_action :authenticate_user!
+  before_action :set_user
+  before_action :set_education, only: [:show]
+  before_action :set_user_education, only: [:edit, :update, :destroy]
 
   # GET /educations
   # GET /educations.json
@@ -41,6 +43,7 @@ class EducationsController < ApplicationController
   # PATCH/PUT /educations/1
   # PATCH/PUT /educations/1.json
   def update
+
     respond_to do |format|
       if @education.update(education_params)
         format.html { redirect_to user_profile_path(@user), notice: 'Education was successfully updated.' }
@@ -71,6 +74,14 @@ class EducationsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def education_params
       params.require(:education).permit(:school, :degree, :start_date, :end_date)
+    end
+
+    def set_user_education
+      @education = current_user.educations.find_by_id(params[:id])
+
+      if @education == nil
+        redirect_to user_profile_path(@user), flash: { alert: "You do not own this listing" }
+      end
     end
 
     def set_user
