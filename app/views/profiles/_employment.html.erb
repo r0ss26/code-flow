@@ -3,4 +3,7 @@
   <div><%= "Position: #{employment.position}" %></div>
   <div><%= "Start Date: #{employment.start_date}" %></div>
   <div><%= "End Date #{employment.end_date}" %></div>
+  <% if @user == current_user %>
+    <%= link_to "Edit", edit_user_employment_path(@user, employment) %>
+  <% end %>
 </div>

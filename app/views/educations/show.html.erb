@@ -20,5 +20,5 @@
   <%= @education.end_date %>
 </p>
 
-<%= link_to 'Edit', edit_education_path(@education) %> |
-<%= link_to 'Back', educations_path %>
+<%= link_to 'Edit', edit_user_education_path(@user, @education) %> |
+<%= link_to 'Back', user_profile_path(@user) %>

@@ -10,7 +10,7 @@
         <span class='title is-bold'><%= "#{@user.first_name} #{@user.middle_name[0]}. #{@user.last_name}" %></span>
         <br>
         <% if @user == current_user %>
-          <%= link_to "Edit Profile", edit_user_registration_path, class: "button is-primary is-outlined"%>
+          <%= link_to "Edit Bio.", edit_user_registration_path, class: "button is-primary is-outlined"%>
         <% end %>
         <br>
       </p>
@@ -37,12 +37,15 @@
   <div class="columns has-text-centered">
     <div class="column is-one-third">
       <div class="title">Employment</div>
+      <% if @user == current_user %>
+        <%= link_to "+ Add", new_user_employment_path(@user) %>
+      <% end %>
       <%= render partial: "employment", collection: @employments %>
     </div>
     <div class="column is-one-third">
       <div class="title">Education</div>
       <% if @user == current_user %>
-        <%= link_to "Add", new_user_education_path(@user) %>
+        <%= link_to "+ Add", new_user_education_path(@user) %>
       <% end %>
       <%= render partial: "education", collection: @educations %>
     </div>
