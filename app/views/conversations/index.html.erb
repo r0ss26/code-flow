@@ -1,6 +1,6 @@
 <div class="container">
   <div class="section">
-    <h3 class="title">Mailbox</h3>
+    <h3 class="title">Your Conversations</h3>
     <div>
       <% @conversations.each do |conversation| %>
         <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
