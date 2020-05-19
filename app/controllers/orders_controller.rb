@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: [:show, :edit, :update, :destroy, :mark_complete]
   before_action :authenticate_user!
   before_action :set_listing, only: [:index, :new, :create]
 
@@ -82,17 +82,17 @@ class OrdersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_order
-      @order = Order.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_order
+    @order = Order.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def order_params
-      params.require(:order).permit(:listing_id, :cost, :paid, :completed, :buyer, :seller)
-    end
+  # Only allow a list of trusted parameters through.
+  def order_params
+    params.require(:order).permit(:listing_id, :cost, :paid, :completed, :buyer, :seller)
+  end
 
-    def set_listing
-      @listing = Listing.find(params[:listing_id])
-    end
+  def set_listing
+    @listing = Listing.find(params[:listing_id])
+  end
 end
