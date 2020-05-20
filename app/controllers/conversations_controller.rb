@@ -7,6 +7,10 @@ class ConversationsController < ApplicationController
   end
 
   def create
+    if !params[:sender_id]
+      redirect_to new_user_session_path, message: { alert: "You must be signed in to send a message"}
+    end
+    
     if Conversation.between(params[:sender_id],params[:recipient_id]).present?
       @conversation = Conversation.between(params[:sender_id], params[:recipient_id]).first
     else
