@@ -11,14 +11,16 @@
                 <img class="is-rounded" src="https://bulma.io/images/placeholders/48x48.png" alt="Placeholder image">
             </figure>
           </div>
-          <%= link_to "Message #{@listing.user.first_name}", conversations_path(sender_id: current_user ? current_user.id : nil, recipient_id: @listing.user.id), method: "post", class: "button is-warning"%>
+          <% if current_user != @listing.user %>
+            <%= link_to "Message #{@listing.user.first_name}", conversations_path(sender_id: current_user ? current_user.id : nil, recipient_id: @listing.user.id), method: "post", class: "button is-warning"%>
+          <% end %>
           <hr>
           <div class="box is-inline"><strong><%= @listing.category.name %></strong></div>
           <div class="box is-inline"><strong>$<%= cents_to_dollars(@listing.price) %></strong></div>
           <div class="box is-inline"><strong>Delivery Time: <%= @listing.delivery_time %> Days</strong></div>
           <div class="box is-inline">
             <%= link_to listing_favorite_path(@listing), method: "put" do %>
-              <%= current_user && current_user.favorited?(@listing, scope: :favorite) ? fa_icon("heart") : fa_icon("heart-o") %>
+              <%= current_user && current_user.favorited?(@listing, scope: :favorite) ? fa_icon("heart", type: :regular, style: 'color: Red') : fa_icon("heart",  style: 'color: Red') %>
             <% end %> 
           </div>
           <hr>
