@@ -1,8 +1,12 @@
 <div class='section profile-heading'>
   <div class='columns is-mobile is-multiline'>
     <div class='column is-2'>
-      <span class='header-icon user-profile-image'>
-        <img alt='' src='http://placehold.it/300x225'>
+      <span class='header-icon image user-profile-image'>
+        <% if @user.image.attached? %>
+          <%= image_tag @user.image %>
+        <% else %>
+          <img alt='' src='http://placehold.it/300x225'>
+        <% end %>
       </span>
     </div>
     <div class='column is-4-tablet is-10-mobile name'>

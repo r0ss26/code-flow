@@ -12,6 +12,21 @@
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
 
+      <div class="field file">
+        <%= f.label "Image" %>
+        <%= f.label :image, class: "file-label" do %>
+          <%= f.file_field :image, class: "file-input" %>
+          <span class="file-cta">
+            <span class="file-icon">
+              <i class="fas fa-upload"></i>
+            </span>
+            <span class="file-label">
+              Choose a file…
+            </span>
+          </span>
+        <% end %>
+      </div>
+
       <div class="field">
         <%= f.label :first_name %>
         <%= f.text_field :first_name %>
