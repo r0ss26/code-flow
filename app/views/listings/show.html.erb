@@ -28,8 +28,8 @@
             <%= render partial: "shared/tag", collection: @listing.tags %>
           </div>
           <figure class="image is-4x3">
-            <%= image_tag  @listing.image if @listing.image.attached?%>
-            <%= image_tag  "https://bulma.io/images/placeholders/1280x960.png" if !@listing.image.attached? %>
+            <%= image_tag @listing.image if @listing.image.attached?%>
+            <%= image_tag "https://picsum.photos/1280/960" if !@listing.image.attached? %>
           </figure>
           <p>
             <strong>Description:</strong>
