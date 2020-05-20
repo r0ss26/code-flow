@@ -4,8 +4,8 @@ class Listing < ApplicationRecord
   validates :delivery_time, numericality: {greater_than: 0}
   belongs_to :user
   belongs_to :category
-  has_many :orders
-  has_one_attached :image
+  has_many :orders, dependent: :nullify
+  has_one_attached :image, dependent: :destroy
   acts_as_favoritable
   acts_as_taggable_on :tags
 end
