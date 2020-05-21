@@ -218,29 +218,29 @@ Broadly speaking the target audience for this application is anyone who wants to
 
 ### Home Page
 
-![Home Page](./docs/Wireframes/Home Page.png)
+![home-page](/home/ross/code-flow/docs/Wireframes/home-page.png)
 
 ### Individual Listing
 
-![Individual Listing Page (Read)](./docs/Wireframes/Individual Listing Page (Read).png)
+![individual-listing-page](/home/ross/code-flow/docs/Wireframes/individual-listing-page.png)
 
 #### Browse Listings
 
+![browse-listings](/home/ross/code-flow/docs/Wireframes/browse-listings.png)
 
 
-![Reviewers Listing Page (Read)](./docs/Wireframes/Reviewers Listing Page (Read).png)
 
 #### Sign Up
 
-![Sign up Page (Create)](./docs/Wireframes/Sign up Page (Create).png)
+![sign-up](/home/ross/code-flow/docs/Wireframes/sign-up.png)
 
 #### Profile Page
 
-![Your Account Page (Edit, Delete)](./docs/Wireframes/Your Account Page (Edit, Delete).png)
+![your-account](/home/ross/code-flow/docs/Wireframes/your-account.png)
 
 #### Listing Administration
 
-![Your Listing Page (Create, Edit, Delete)](./docs/Wireframes/Your Listing Page (Create, Edit, Delete).png)
+![listing-admin](/home/ross/code-flow/docs/Wireframes/listing-admin.png)
 
 ## Entity Relationship Diagram
 
@@ -479,6 +479,6 @@ I used deadline and the trello calendar to track my progress on the most importa
 
 ![jira](./docs/screenshots/project-management/jira.png)
 
+![trello-2](/home/ross/code-flow/docs/screenshots/project-management/trello-2.png)
 
-
-![Screenshot from 2020-05-16 13-20-15](./docs/screenshots/project-management/Screenshot from 2020-05-15 10-31-30.png)
+![trello](/home/ross/code-flow/docs/screenshots/project-management/trello.png)
