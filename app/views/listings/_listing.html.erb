@@ -15,7 +15,7 @@
       <div class="media">
         <div class="media-left">
           <figure class="image is-64x64 thumbnail">
-            <%= image_tag  listing.user.image, class: "is-rounded" if listing.image.attached?%>
+            <%= image_tag listing.user.image, class: "is-rounded" if listing.user.image.attached? %>
             <%= image_tag "avatar/#{rand(1..7)}.jpg", class: "is-rounded" if !listing.user.image.attached?%>
           </figure>
         </div>
