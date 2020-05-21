@@ -7,7 +7,7 @@ class EmploymentsController < ApplicationController
   # GET /employments
   # GET /employments.json
   def index
-    @employments = current_user.employments
+    @employments = @user.employments
   end
 
   # GET /employments/1

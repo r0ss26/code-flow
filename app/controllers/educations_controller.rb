@@ -7,6 +7,7 @@ class EducationsController < ApplicationController
   # GET /educations
   # GET /educations.json
   def index
+    # Get all the education objects belonging to the user.
     @educations = @user.educations
   end
 

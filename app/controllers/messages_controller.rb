@@ -1,11 +1,14 @@
 class MessagesController < ApplicationController
   before_action do
+    # Find the conversation from the url parameter
     @conversation = Conversation.find(params[:conversation_id])
   end
 
   def index
+    # Get all the messages in the conversation.
     @messages = @conversation.messages
 
+    # Split the messages up into blocks of ten.
     if @messages.length > 10
       @over_ten = true
       @messages = @messages[-10..-1]
@@ -16,6 +19,7 @@ class MessagesController < ApplicationController
       @messages = @conversation.messages
     end
 
+    # Set the message to read if it was posted by the sender.
     if @messages.last
       if @messages.last.user_id != current_user.id
         @messages.last.read = true;

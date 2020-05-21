@@ -32,6 +32,10 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
+    # Create a new order
+    # Set the properties based on the listing
+    # Buyer and seller are defined by listing poster and current user.
+    # Order price is defined by the listing price.
     @order = Order.new
     @seller = @listing.user
     @order.paid = false

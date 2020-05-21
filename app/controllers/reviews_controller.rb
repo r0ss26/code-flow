@@ -28,6 +28,7 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.json
   def create
+    # Create a review on the order and set the reviewer and reviewee id's.
     @review = @order.create_review(review_params)
     @review.review_poster_id = current_user.id
     @review.review_receiver_id = @order.seller.id

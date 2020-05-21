@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
   before_action :set_user
 
   def show
-
+    # Get the users educations, employments and received reviews.
     @educations = @user.educations
     @employments = @user.employments
     @reviews = Review.where(review_receiver_id: @user.id)

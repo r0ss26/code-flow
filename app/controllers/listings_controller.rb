@@ -7,7 +7,8 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
-    @listings = Listing.includes(:user).where(active:true).paginate(page: params[:page], per_page: 15)
+    # Get all of the active listings in the database. Eager load the user to display their information.
+    @listings = Listing.where(active:true).paginate(page: params[:page], per_page: 15).includes(:user)
   end
 
   # GET /listings/1
@@ -65,7 +66,9 @@ class ListingsController < ApplicationController
   end
 
   def favorite
-    @listing = Listing.includes(:user).find(params[:listing_id])
+    # Get the listing that the user has favorited/unfavorited
+    # to toggle the favorite.
+    @listing = Listing.find(params[:listing_id])
     if current_user.favorited?(@listing)
       current_user.unfavorite(@listing)
     else
@@ -78,10 +81,12 @@ class ListingsController < ApplicationController
   private
 
   def set_listing
+    # Get the listing from the url parameter
     @listing = Listing.find(params[:id])
   end
 
   def set_user_listing
+    # See if the current user owns the listing
     @listing = current_user.listings.find_by_id(params[:id])
 
     if current_user != @listing.user

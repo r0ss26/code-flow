@@ -2,7 +2,11 @@ class ConversationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @users = User.all
+    # Returns all the users to display a list of people to message.
+    @users = User.all.paginate(page: params[:page], per_page: 15)
+
+    # Returns all of the conversations which the current user is a member of.
+    # The scope for the current users conversations is defined in app/models/conversation.rb
     @conversations = Conversation.all
   end
 
