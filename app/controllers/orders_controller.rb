@@ -2,11 +2,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!, except: [:webhook]
   before_action :set_listing, except: [:webhook]
   skip_before_action :verify_authenticity_token, only: [:webhook]
-
-
   before_action :set_user_order, only: [:mark_complete]
-
-
   before_action :set_listing_order, only: [:show, :edit, :update, :destroy, :mark_complete]
 
   # GET /orders
