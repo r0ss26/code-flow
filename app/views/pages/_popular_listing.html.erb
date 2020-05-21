@@ -9,8 +9,8 @@
 
     <div class="card-image">
       <figure class="image is-4by3">
-        <%= image_tag  popular_listing.image if popular_listing.image.attached?%>
-        <%= image_tag  "https://picsum.photos/1280/960" if !popular_listing.image.attached? %>
+        <%= image_tag popular_listing.image if popular_listing.image.attached?%>
+        <%= image_tag "example_images/#{rand(1..20)}.jpg" if !popular_listing.image.attached? %>
       </figure>
     </div>
 
@@ -18,8 +18,8 @@
       <div class="media">
         <div class="media-left">
           <figure class="image is-48x48">
-            <%= image_tag  popular_listing.user.image if popular_listing.image.attached?%>
-            <%= image_tag "https://www.placecage.com/48/48" if !popular_listing.image.attached? %>
+            <%= image_tag  popular_listing.user.image if popular_listing.user.image.attached?%>
+            <%= image_tag "avatar/#{rand(1..7)}.jpg" if !popular_listing.user.image.attached?%>
           </figure>
         </div>
         <div class="media-content">

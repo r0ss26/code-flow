@@ -8,7 +8,8 @@
           <div class="subtitle">
             <%= "#{@listing.user.first_name} #{@listing.user.middle_name[0]}. #{@listing.user.last_name}" %>
             <figure class="image is-48x48">
-                <img class="is-rounded" src="https://bulma.io/images/placeholders/48x48.png" alt="Placeholder image">
+              <%= image_tag listing.user.image if @listing.user.image.attached?%>
+              <%= image_tag "avatar/#{rand(1..7)}.jpg" if !@listing.user.image.attached?%>
             </figure>
           </div>
           <% if current_user != @listing.user %>
@@ -29,7 +30,7 @@
           </div>
           <figure class="image is-4x3">
             <%= image_tag @listing.image if @listing.image.attached?%>
-            <%= image_tag "https://picsum.photos/1280/960" if !@listing.image.attached? %>
+            <%= image_tag "example_images/#{rand(1..20)}.jpg" if !@listing.image.attached? %>
           </figure>
           <p>
             <strong>Description:</strong>

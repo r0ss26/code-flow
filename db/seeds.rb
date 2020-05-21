@@ -74,7 +74,7 @@ for i in 0...100
                        price: (rand(5..50) + 1),
                        delivery_time: rand(1..7),
                        active: [true, false].sample,
-                       tag_list: tags.sample(rand(1..8)))
+                       tag_list: tags.sample(rand(1..8)))                
   puts listing.errors.any? ? listing.errors.full_messages : "Listing #{i} created"
 end
 
