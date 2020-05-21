@@ -17,9 +17,9 @@
     <div class="card-content">
       <div class="media">
         <div class="media-left">
-          <figure class="image is-48x48">
-            <%= image_tag  popular_listing.user.image if popular_listing.user.image.attached?%>
-            <%= image_tag "avatar/#{rand(1..7)}.jpg" if !popular_listing.user.image.attached?%>
+          <figure class="image is-64x64 thumbnail">
+            <%= image_tag  popular_listing.user.image, class: "is-rounded" if popular_listing.user.image.attached?%>
+            <%= image_tag "avatar/#{rand(1..7)}.jpg", class: "is-rounded" if !popular_listing.user.image.attached?%>
           </figure>
         </div>
         <div class="media-content">

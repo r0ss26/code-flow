@@ -7,15 +7,16 @@
     </header>
     <div class="card-image">
       <figure class="image is-4by3">
-        <%= image_tag  favorite.image if favorite.image.attached?%>
-        <%= image_tag  "https://bulma.io/images/placeholders/1280x960.png" if !favorite.image.attached? %>
+        <%= image_tag favorite.image if favorite.image.attached?%>
+        <%= image_tag "example_images/#{rand(1..20)}.jpg" if !favorite.image.attached?%>
       </figure>
     </div>
     <div class="card-content">
       <div class="media">
         <div class="media-left">
-          <figure class="image is-48x48">
-            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+          <figure class="image is-48x48 thumbnail">
+            <%= image_tag favorite.image if favorite.image.attached?%>
+            <%= image_tag "avatar/#{rand(1..7)}.jpg", class: "is-rounded" if !favorite.image.attached?%>
           </figure>
         </div>
         <div class="media-content">

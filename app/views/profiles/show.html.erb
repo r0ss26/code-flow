@@ -1,13 +1,13 @@
 <div class='section profile-heading'>
   <div class='columns is-mobile is-multiline'>
     <div class='column is-2'>
-      <span class='header-icon image user-profile-image'>
+      <div class='image user-profile-image'>
         <% if @user.image.attached? %>
-          <%= image_tag @user.image %>
+          <%= image_tag @user.image, class: "is-rounded" %>
         <% else %>
-          <%= image_tag "avatar/#{rand(1..7)}.jpg" if !@user.image.attached?%>
+          <%= image_tag "avatar/#{rand(1..7)}.jpg", class: "is-rounded" if !@user.image.attached?%>
         <% end %>
-      </span>
+      </div>
     </div>
     <div class='column is-4-tablet is-10-mobile name'>
       <p>

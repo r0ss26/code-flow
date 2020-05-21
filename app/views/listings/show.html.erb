@@ -7,9 +7,9 @@
           <div class="title"><%= @listing.title %></div>  
           <div class="subtitle">
             <%= "#{@listing.user.first_name} #{@listing.user.middle_name[0]}. #{@listing.user.last_name}" %>
-            <figure class="image is-48x48">
-              <%= image_tag listing.user.image if @listing.user.image.attached?%>
-              <%= image_tag "avatar/#{rand(1..7)}.jpg" if !@listing.user.image.attached?%>
+            <figure class="image is-64x64 thumbnail">
+              <%= image_tag listing.user.image, class: "is-rounded" if @listing.user.image.attached?%>
+              <%= image_tag "avatar/#{rand(1..7)}.jpg", class: "is-rounded" if !@listing.user.image.attached?%>
             </figure>
           </div>
           <% if current_user != @listing.user %>

@@ -26,3 +26,30 @@
 
  .actions { text-align: center;}
  
+ .thumbnail {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  overflow: hidden;
+}
+.thumbnail img, .user-profile-image img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}
+.thumbnail img.portrait, .user-profile-image img.portrait {
+  width: 100%;
+  height: auto;
+}
+.user-profile-image {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+}
+ 
