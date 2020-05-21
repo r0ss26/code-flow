@@ -31,7 +31,7 @@
 
     <footer class="card-footer">
       <%= link_to "View Listing", listing_path(popular_listing), class: "card-footer-item" %>
-      <%= link_to "Purchase", new_listing_order_path(popular_listing), class: "card-footer-item" %>
+      <%= link_to "Seller Profile", user_profile_path(popular_listing.user.id), class: "card-footer-item" %>
     </footer>
     
   </div>

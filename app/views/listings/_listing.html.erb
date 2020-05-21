@@ -33,7 +33,7 @@
     </div>
     <footer class="card-footer">
       <%= link_to "View Listing", listing_path(listing), class: "card-footer-item" %>
-      <%= link_to "Purchase", new_listing_order_path(listing), class: "card-footer-item" %>
+      <%= link_to "Seller Profile", user_profile_path(listing.user.id), class: "card-footer-item" %>
       <%= link_to listing_favorite_path(listing), method: "put", class: "card-footer-item" do %>
         <% if current_user && current_user.favorited?(listing, scope: :favorite) %>
           <%= fa_icon("heart", style: 'color: Red') %>
