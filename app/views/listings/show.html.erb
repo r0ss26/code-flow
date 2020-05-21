@@ -17,7 +17,7 @@
           <% end %>
           <hr>
           <div class="box is-inline"><strong><%= @listing.category.name %></strong></div>
-          <div class="box is-inline"><strong>$<%= cents_to_dollars(@listing.price) %></strong></div>
+          <div class="box is-inline"><strong>$<%= @listing.price %></strong></div>
           <div class="box is-inline"><strong>Delivery Time: <%= @listing.delivery_time %> Days</strong></div>
           <div class="box is-inline">
             <%= link_to listing_favorite_path(@listing), method: "put" do %>
@@ -42,7 +42,7 @@
     </div>
     <div class="column is-one-quarter is-offset-1 is-vcentered">
       <div class="box">
-        <h4 class="title">Total: $<%= cents_to_dollars(@listing.price) %></h4>
+        <h4 class="title">Total: $<%= @listing.price %></h4>
         <%= link_to "Purchase",  new_listing_order_path(@listing), class: "button is-success is-large is-fullwidth"%>
       </div>
     </div>
