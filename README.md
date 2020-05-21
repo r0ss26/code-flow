@@ -67,7 +67,8 @@ The purpose of my two-way marketplace application is to bring together a communi
   - Leave reviews for listings they have purchased.
   - Modify their account settings and profile.
 
-	#### Favourites
+
+#### Favourites
 
 - Users are able to favourite other users listings which will then be available from their dashboard for easy navigation and to keep track of purchases they are considering.
 
