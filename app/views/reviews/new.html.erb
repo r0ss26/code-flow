@@ -1,5 +1,12 @@
-<h1>New Review</h1>
+<div class="section">
+  <div class="columns">
+    <div class="column is-one-third"></div>
+    <div class="column is-one-third">
+      <h1>New Review</h1>
+        <%= render 'form', review: @review %>
 
-<%= render 'form', review: @review %>
-
-<%= link_to 'Back', purchases_dashboard_path %>
+        <%= link_to 'Back', purchases_dashboard_path %>
+    </div>
+    <div class="column is-one-third"></div>
+  </div>
+</div>

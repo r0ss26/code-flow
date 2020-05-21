@@ -43,8 +43,26 @@
     <div class="column is-one-quarter is-offset-1 is-vcentered">
       <div class="box">
         <h4 class="title">Total: $<%= @listing.price %></h4>
-        <%= link_to "Purchase",  new_listing_order_path(@listing), class: "button is-success is-large is-fullwidth"%>
+        <button data-stripe="payment" class="button is-success is-large is-fullwidth">
+          Purchase
+        </button>
       </div>
     </div>
   </div>
 </div>
+
+<script src="https://js.stripe.com/v3/"></script>
+
+<script>
+  document
+    .querySelector("[data-stripe='payment']")
+    .addEventListener("click", () => {
+      const stripe = Stripe(
+        "<%= Rails.application.credentials.dig(:stripe, :public_key) %>"
+      );
+
+      stripe.redirectToCheckout({
+        sessionId: "<%= @session_id %>"
+      });
+    });
+</script>

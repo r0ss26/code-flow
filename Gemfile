@@ -82,3 +82,5 @@ gem "font_awesome5_rails", "~> 1.1"
 gem "font-awesome-rails", "~> 4.7"
 
 gem "avatar_magick", "~> 1.0"
+
+gem "stripe", "~> 5.22"

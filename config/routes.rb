@@ -36,4 +36,6 @@ Rails.application.routes.draw do
     resources :messages
   end
 
+  post "/payments/webhook", to: "orders#webhook"
+
 end
