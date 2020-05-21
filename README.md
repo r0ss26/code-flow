@@ -219,7 +219,7 @@ Broadly speaking the target audience for this application is anyone who wants to
 
 ### Home Page
 
-![home-page](.docs/Wireframes/home-page.png)
+![home-page](./docs/Wireframes/home-page.png)
 
 ### Individual Listing
 
