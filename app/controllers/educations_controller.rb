@@ -69,6 +69,8 @@ class EducationsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_education
+      # Find the row in the educations table where the id column
+      # is the id of the params id.
       @education = Education.find(params[:id])
     end
 
@@ -78,6 +80,9 @@ class EducationsController < ApplicationController
     end
 
     def set_user_education
+      # Query the educations table and find the row where the user_id
+      # is the same as the current user and the id is the id passed
+      # in to the parameters.
       @education = current_user.educations.find_by_id(params[:id])
 
       if @education == nil

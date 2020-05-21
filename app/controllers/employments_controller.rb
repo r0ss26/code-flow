@@ -7,6 +7,8 @@ class EmploymentsController < ApplicationController
   # GET /employments
   # GET /employments.json
   def index
+    # Find the rows in the employments table where
+    # the user_id is same as the id of the user variable.
     @employments = @user.employments
   end
 
@@ -67,14 +69,20 @@ class EmploymentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_employment
+      # Find the row in the employments table with the id of that passed
+      # in to the id paramter.
       @employment = Employment.find(params[:id])
     end
 
     def set_user
+      # Find the user where the id is the same as the id passed
+      # in to the parameter.
       @user = User.find(params[:user_id])
     end
 
     def set_user_employment
+      # Find the rows in the employments table where the user_id is that
+      # of the curent user and id is that of the id passed in to the params.
       @employment = current_user.employments.find_by_id(params[:id])
 
       if @employment == nil

@@ -28,7 +28,10 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.json
   def create
-    # Create a review on the order and set the reviewer and reviewee id's.
+    # Create a new review and set the order_id to that of
+    # the order passed into the params. Set the review_poster_id
+    # to be the id of the current user and the review_receiver_id
+    # to be that of seller of the order.
     @review = @order.create_review(review_params)
     @review.review_poster_id = current_user.id
     @review.review_receiver_id = @order.seller.id
@@ -72,14 +75,20 @@ class ReviewsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_listing
+      # Find the row in the listings table where the id is that
+      # of the id passed in to the params.
       @listing = Listing.find(params[:listing_id])
     end
 
     def set_order
+      # Find the row in the orders table where the id is that
+      # of the id passed in to the params.
       @order = Order.find(params[:order_id])
     end
 
     def set_review
+      # Find the row in the reviews table where the id is that
+      # of the id passed in to the params.
       @review = Review.find(params[:id])
     end
 

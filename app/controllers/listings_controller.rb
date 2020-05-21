@@ -8,7 +8,8 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
-    # Get all of the active listings in the database. Eager load the user to display their information.
+    # Get all of the listings in the database where the active columns has a value of true. Eager load
+    # the user object as this will be accessed in the erb template.
     @listings = Listing.where(active:true).paginate(page: params[:page], per_page: 15).includes(:user)
   end
 
@@ -50,6 +51,8 @@ class ListingsController < ApplicationController
   # POST /listings
   # POST /listings.json
   def create
+    # Create a new listing and set the user_id to that of the current
+    # users id.
     @listing = current_user.listings.create(listing_params)
 
     respond_to do |format|
